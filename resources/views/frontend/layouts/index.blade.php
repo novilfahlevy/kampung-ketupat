@@ -49,26 +49,34 @@
                             </span>
                         </button>
                         <div class="collapse navbar-collapse main-menu justify-content-center" id="fixedNavbar">
+                            @php
+                                $isInGalleryPage = request()->routeIs('galeri.index') || request()->routeIs('galeri.show');
+                                $isInBlogPage = request()->routeIs('blog.index') || request()->routeIs('blog.show');
+                                $isInsidePage = $isInGalleryPage || $isInBlogPage;
+                            @endphp
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link active menu-link" href="#home">
+                                    <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/') : '#home' }}">
                                         <i class="fas fa-home"></i>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link menu-link" href="#lokasi">Lokasi</a>
-                                </li>
-                                {{-- <li class="nav-item">
-                                    <a class="nav-link menu-link" href="#pengunjung">Pengunjung</a>
-                                </li> --}}
-                                <li class="nav-item">
-                                    <a class="nav-link menu-link" href="#blog">Blog</a>
+                                    <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#lokasi') : '#lokasi' }}">Lokasi</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link menu-link" href="#ulasan">Ulasan</a>
+                                    <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#kerjasama') : '#kerjasama' }}">Kerjasama</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link menu-link" href="#faq-area">FAQ</a>
+                                    <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#galeri') : '#galeri' }}">Galeri</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#blog') : '#blog' }}">Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#ulasan') : '#ulasan' }}">Ulasan</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#faq-area') : '#faq-area' }}">FAQ</a>
                                 </li>
                             </ul>
                         </div>

@@ -18,7 +18,7 @@
 <!--// Hero Section End //-->
 
 {{-- Location Section Start --}}
-<section class="section bg-light-grey" id="lokasi">
+<section class="section" id="lokasi">
     <div class="container">
         <h2 class="mb-5 text-center">Lokasi</h2>
         <div class="custom-card">
@@ -28,26 +28,46 @@
 </section>
 {{-- Location Section End --}}
 
-<!--// Visitor Section Start //-->
-{{-- <section class="section bg-light-grey" id="pengunjung">
+<!--// Kerjasama Section Start //-->
+<section class="section bg-light-grey" id="kerjasama">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="section-heading">
-                    <h2>Pengunjung</h2>
-                    <h4>Kunjungan dari berbagai pihak ke kampung ketupat.</h4>
+                    <h2>Kerjasama</h2>
+                    <h4>Pihak yang pernah bekerja sama dan mengadakan kegiatan di Kampung Ketupat</h4>
                 </div>
             </div>
         </div>
+        <div class="kerjasama-carousel owl-carousel owl-theme mb-20">
+            <div class="item">
+                <img src="{{ asset('storage/img/team/team-img-1.png') }}" alt="Screenshots image" class="img-fluid h-100">
+            </div>
+            <div class="item">
+                <img src="{{ asset('storage/img/team/team-img-2.png') }}" alt="Screenshots image" class="img-fluid h-100">
+            </div>
+            <div class="item">
+                <img src="{{ asset('storage/img/team/team-img-3.png') }}" alt="Screenshots image" class="img-fluid h-100">
+            </div>
+            <div class="item">
+                <img src="{{ asset('storage/img/team/team-img-4.png') }}" alt="Screenshots image" class="img-fluid h-100">
+            </div>
+        </div>
+    </div>
+</section>
+<!--// Kerjasama Section End //-->
+
+<!--// Galeri Section Start //-->
+<section class="section" id="galeri">
+    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-4">
-                <div class="about-box">
-                    <h6>Total Pengunjung</h6>
-                    <h5 class="counter">3000</h5>
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <h2>Galeri</h2>
                 </div>
             </div>
         </div>
-        <div class="screenshots-carousel owl-carousel owl-theme">
+        <div class="gallery-carousel owl-carousel owl-theme mb-20">
             <div class="item">
                 <img src="{{ asset('storage/img/kunjungan/junjungan-1.jpg') }}" alt="Screenshots image" class="img-fluid h-100">
             </div>
@@ -73,12 +93,17 @@
                 <img src="{{ asset('storage/img/kunjungan/junjungan-9.png') }}" alt="Screenshots image" class="img-fluid h-100">
             </div>
         </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <a href="{{ route('galeri.index') }}" class="primary-btn">Lihat Selengkapnya</a>
+            </div>
+        </div>
     </div>
-</section> --}}
-<!--// Visitor Section End //-->
+</section>
+<!--// Galeri Section End //-->
 
-<!--// Latest Blogs Section Start //-->
-<section class="section" id="blog">
+<!--// Blogs Section Start //-->
+<section class="section bg-light-grey" id="blog">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
@@ -90,7 +115,7 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-20">
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="blog-item">
                     <div class="img">
@@ -176,12 +201,17 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <a href="{{ route('blog.index') }}" class="primary-btn">Lihat Selengkapnya</a>
+            </div>
+        </div>
     </div>
 </section>
-<!--// Latest Blogs Section End //-->
+<!--// Blogs Section End //-->
 
 <!--// Testimonials Section Start //-->
-<section class="section bg-light-grey" id="ulasan">
+<section class="section" id="ulasan">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
@@ -224,7 +254,7 @@
 <!--// Testimonials Section End //-->
 
 <!--// FAQ Section Start //-->
-<section class="section" id="faq-area">
+<section class="section bg-light-grey" id="faq-area">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">

@@ -2,7 +2,8 @@
 
 @section('content')
 <!--// Breadcrumb Section Start //-->
-<section class="breadcrumb-section section" data-bg-image-path="{{ asset('storage/img/bg/breadcrumb-img.png') }}">
+<section class="breadcrumb-section section" data-bg-image-path="{{ asset('storage/img/bg/bg-grid.jpg') }}">
+	<div id="heroparticles"></div>
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-lg-8">

@@ -172,7 +172,7 @@ function HovyLeeCounterUp() {
 
     $(".nav-item a[href*='#']").on('click', function(event) {
       
-        if (this.hash !== "") {
+        if (this.hash !== "" && $(this).data('scroll')) {
           event.preventDefault();
           var hash = this.hash;
     
@@ -209,16 +209,14 @@ function HovyLeeCarousel(){
     "use-strict";
 
     // Variables
-    let testimonialsCarousel    = $( '.testimonials-carousel');
+    let $testimonialsCarousel    = $( '.testimonials-carousel');
+    let $galleryCarousel         = $( '.gallery-carousel');
+    let $kerjasamaCarousel       = $( '.kerjasama-carousel');
 
-    testimonialsCarousel.owlCarousel({
-        autoplay: true,
-        autoplaySpeed: 3000,
-        autoplayTimeout: 3000,
+    const carouselConfig = {
         margin:30,
         dots:true,
         nav:false,
-        center: true,
         responsive:{
             0:{
                 items:1
@@ -233,13 +231,27 @@ function HovyLeeCarousel(){
                 items:3
             }
         },
-        onInitialize: function (event) {
-            if ($('.testimonials-carousel.owl-carousel .item').length <= 1) {
-               this.settings.loop = false;
-            } else {
-                this.settings.loop = true;
-            }
-        }
+    }
+
+    $kerjasamaCarousel.owlCarousel({
+        ...carouselConfig,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        autoplayTimeout: 2000,
+        loop: true,
+        center: true,
+    });
+
+    $galleryCarousel.owlCarousel({
+        ...carouselConfig,
+        loop: true,
+        center: true,
+    });
+    
+    $testimonialsCarousel.owlCarousel({
+        ...carouselConfig,
+        center: true,
+        loop: true,
     });
 }
 
