@@ -1,0 +1,57 @@
+/* ---------------------------------------------------------------- */
+/* 19.FAQ                 
+/* ---------------------------------------------------------------- */
+.accordion-item {
+    margin-bottom: 30px;
+    background: $color_white;
+    transition: all 0.25s ease-in-out;
+    box-shadow: 0 5px 15px 0 $color_shadow;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    .accordion-item-header {
+        a {
+            color: $color_black;
+            padding: 30px 60px 30px 30px;
+            display: block;
+            position: relative;
+            font-family: $font_heading;
+            font: {
+                weight: 700;
+            }
+            i{
+                margin-right: 15px;
+                color: $color_black;
+            }
+            &:after {
+                content: "\f067";
+                position: absolute;
+                top: 30px;
+                right: 30px;
+                color: $color_primary;
+                font: {
+                    family: "Font Awesome 5 Free";
+                    size: 1rem;
+                    weight: 700;
+                }
+            }
+            &[aria-expanded="true"]:after {
+                content: "\f068";
+            }
+        }
+    }
+    .accordion-body {
+        padding:30px;
+        background: $color_white;
+        border: none;
+        border-top: 1px solid rgba($color_black,0.03);
+    }
+}
+/* ---------------------------------------------------------------- */
+/* Responsive Media Query (992px)
+/* ---------------------------------------------------------------- */
+@media only screen and (max-width:992px) {
+    .accordion-resp-mt {
+        margin-top: 30px;
+    }
+}

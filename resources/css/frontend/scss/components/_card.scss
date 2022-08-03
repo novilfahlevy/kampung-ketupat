@@ -1,0 +1,15 @@
+.custom-card {
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  background: $color_white;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 5px 15px 0 $color_shadow;
+  h6 {
+      margin-bottom: 10px;
+  }
+  h5 {
+      font-size: 46px;
+      color: $color_primary;
+  }
+}

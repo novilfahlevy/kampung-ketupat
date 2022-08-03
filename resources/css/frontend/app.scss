@@ -1,0 +1,62 @@
+@tailwind utilities;
+
+// Functions,Mixins,Variables
+@import "scss/abstracts/variables";
+@import "scss/abstracts/mixin";
+
+// Reset,Typography,Helper Class
+@import "scss/base/reset";
+@import "scss/base/typography";
+@import "scss/base/helper_class";
+
+// Components
+@import "scss/components/buttons";
+@import "scss/components/card";
+@import "scss/components/animations";
+@import "scss/components/form";
+@import "scss/components/pagination";
+@import "scss/components/preloader";
+
+// Layout
+@import "scss/layout/header";
+@import "scss/layout/hero";
+@import "scss/layout/features";
+@import "scss/layout/about";
+@import "scss/layout/new_features";
+@import "scss/layout/watch_video";
+@import "scss/layout/testimonial";
+@import "scss/layout/pricing";
+@import "scss/layout/download_app";
+@import "scss/layout/our_team";
+@import "scss/layout/faq";
+@import "scss/layout/blog";
+@import "scss/layout/contact";
+@import "scss/layout/footer";
+@import "scss/layout/breadcrumb";
+@import "scss/layout/sidebar";
+
+// Pages
+@import "scss/pages/blog_single";
+@import "scss/pages/intro";
+
+// Custom
+.about-box {
+  padding: 30px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  background: #fff;
+  border-left: 10px solid #5268F2;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  -webkit-box-shadow: 0 5px 15px 0 rgba(194, 188, 210, 0.2);
+          box-shadow: 0 5px 15px 0 rgba(194, 188, 210, 0.2);
+}
+
+.about-box h6 {
+  margin-bottom: 10px;
+}
+
+.about-box h5 {
+  font-size: 46px;
+  color: #5268F2;
+}

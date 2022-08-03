@@ -1,0 +1,47 @@
+/* ---------------------------------------------------------------- */
+/* 12.About                                           
+/* ---------------------------------------------------------------- */
+.about-inner {
+    > h6 {
+        color: $color_primary;
+        margin-bottom: 10px;
+    }
+    h2 {
+        line-height: 46px;
+        margin-bottom: 20px;
+    }
+    p {
+        margin-bottom: 40px;
+    }
+}
+.about-box-wrap {
+    margin-bottom: 10px;
+    .about-box {
+        padding: 30px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        background: $color_white;
+        border-left: 10px solid $color_primary;
+        transition: all 0.25s ease-in-out;
+        box-shadow: 0 5px 15px 0 $color_shadow;
+        h6 {
+            margin-bottom: 10px;
+        }
+        h5 {
+            font-size: 46px;
+            color: $color_primary;
+        }
+    }
+}
+.about-img {
+    text-align: right;
+}
+/* ---------------------------------------------------------------- */
+/* Responsive Media Query (992px)
+/* ---------------------------------------------------------------- */
+@media only screen and (max-width:991.98px) {
+    .about-img {
+        margin-top: 30px;
+        text-align: left;
+    }
+}

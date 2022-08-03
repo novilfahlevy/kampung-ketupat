@@ -1,0 +1,84 @@
+/* -------------------------------------------------------------------
+ * Theme Name            : HovyLee - App Landing Page
+ * Author Name           : Yucel Yilmaz
+ * Created Date          : 25 October 2021
+ * Version               : 1.0
+ * File                  : style.css
+------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------
+   Base                               
+   ------------------------ /
+ * 01.Base
+ * 02.Typography
+ * 03.Helper Class
+   ------------------------ /
+   Components                               
+   ------------------------ /
+ * 04.Buttons  
+ * 05.Animations 
+ * 06.Form(Input, Comment)
+ * 07.Pagination 
+ * 08.Preloader
+   ------------------------ /
+   Layout                               
+   ------------------------ /
+ * 09.Header
+ * 10.Hero
+ * 11.Features
+ * 12.About
+ * 13.New Features
+ * 14.Watch Video
+ * 15.Testimonial
+ * 16.Pricing
+ * 17.Download App   
+ * 18.Our Team
+ * 19.FAQ
+ * 20.Latest Blogs  
+ * 21.Contact Us
+ * 22.Footer
+ * 23.Breadcrumb
+ * 24.Sidebar 
+   ------------------------ /
+   Pages                               
+   ------------------------ /
+ * 25.Blog Single
+ * 26.Home Intro    
+------------------------------------------------------------------- */
+
+/* ---------------------------------------------------------------- */
+/* 01.Base                               
+/* ---------------------------------------------------------------- */
+body, html {
+    font : {
+        size: 16px;
+        family: $font_text; 
+        weight: 400;
+    }
+    color: $body_text;
+    margin: 0;
+    padding: 0;
+}
+body {
+    position: relative;
+}
+::selection {
+    background: $color_dark_blue;
+    color: $color_white;
+}
+a:link, a:hover, a:active, a:visited {
+    text-decoration: none;
+}
+ul, ol {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+textarea, textarea:focus, input, input:focus, button, button:focus {
+    outline: none;
+    resize: inherit;
+}
+.owl-carousel .owl-item img {
+    display: block;
+    width: auto;
+}

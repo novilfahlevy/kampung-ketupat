@@ -1,0 +1,53 @@
+/* ---------------------------------------------------------------- */
+/* 21.Contact Us              
+/* ---------------------------------------------------------------- */
+#error_message {
+    margin-top: 30px;
+    display: block;
+    padding: 20px;
+    border-radius: 5px;
+    word-break: break-word;
+    background: rgba(242, 116, 116, 0.2);
+    color: #721c24;
+}
+.contact-alerts .empty-form span, .contact-alerts .email-invalid span, 
+.contact-alerts .phone-invalid span, .contact-alerts .empty-select span,
+.contact-alerts .security-alert span {
+    display: block;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: $color_white;
+    background: $color_danger;
+}
+.custom-form-group .captcha-input {
+    padding-left: 90px !important;
+}
+.custom-form-group #contactFormCaptchaSpan {
+    position: absolute;
+    top: 0;
+    height: 60px;
+    display: block;
+    width: 70px;
+    line-height: 60px;
+    background: $color_primary;
+    color: $color_white;
+    font-weight: 500;
+    border-radius: 5px 0 0 5px;
+}
+.google-map {
+    line-height: 0;
+    iframe {
+        min-height: 610px;
+        width: 100%;
+    }
+}
+/* ---------------------------------------------------------------- */
+/* Responsive Media Query (992px)
+/* ---------------------------------------------------------------- */
+@media only screen and (max-width: 991.98px) {
+    .google-map {
+        margin-bottom: 30px;
+    }
+}

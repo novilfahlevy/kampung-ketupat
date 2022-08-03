@@ -1,0 +1,84 @@
+/* ---------------------------------------------------------------- */
+/* 04.Buttons                                                     
+/* ---------------------------------------------------------------- */
+.white-btn {
+    font-weight: 500;
+    padding: 16px 35px;
+    text-align: center;
+    border-radius: 500px;
+    display: inline-block;
+    background: $color_white;
+    transition: all 0.5s ease;
+    text-transform: capitalize;
+    color: $color_black !important;
+    border: 1px solid $color_white;
+    box-shadow: 0 15px 30px 0 rgba($color_black,0.15);
+    &:hover {
+        background: transparent;
+        color: $color_white !important;
+        box-shadow: none;
+        animation: pulseWhite 1s 1 ease-in-out forwards;
+    }
+}
+.primary-btn {
+    font-weight: 500;
+    padding: 16px 35px;
+    text-align: center;
+    border-radius: 500px;
+    display: inline-block;
+    background: $color_primary;
+    transition: all 0.5s ease;
+    text-transform: capitalize;
+    color: $color_white !important;
+    border: 1px solid $color_primary;
+    box-shadow: 0 15px 30px 0 rgba($color_primary,0.15);
+    &:hover {
+        color: $color_white !important;
+        box-shadow: none;
+        background: darken($color_primary,10%);
+        animation: pulsePrimary 1s 1 ease-in-out forwards;
+    }
+}
+.outline-btn {
+    font-weight: 500;
+    padding: 16px 35px;
+    text-align: center;
+    border-radius: 500px;
+    display: inline-block;
+    background:  transparent;
+    text-transform: capitalize;
+    transition: all 0.5s ease;
+    border: 1px solid $color_white;
+    color: $color_white !important;
+    &:hover {
+        background: $color_white;
+        color: $color_black !important;
+        animation: pulseWhite 1s ease-in-out forwards;
+    }
+}
+.scroll-top-btn {
+	bottom: 0;
+	opacity: 0;
+	right: 10px;
+	width: 60px;
+    height: 60px;
+    z-index: 144;
+	line-height: 60px;
+	font-size: 16px;
+	border-radius: 50%;
+	text-align: center;
+	position: fixed;
+	visibility: hidden;
+	color: $color_white !important;
+	background: $color_primary;
+	transition: all 0.5s ease;
+	&:hover {
+        color: $color_white !important;
+        animation: pulsePrimary 1s 1 ease-in-out;
+    }
+	&.active {
+		opacity: 1;
+		bottom: 10px;
+		visibility: visible;
+	}
+}

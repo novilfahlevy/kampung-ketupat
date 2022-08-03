@@ -1,0 +1,65 @@
+/* ---------------------------------------------------------------- */
+/* 16.Pricing                          
+/* ---------------------------------------------------------------- */
+.price-table {
+    padding: 40px 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    background: $color_white;
+    transition: all 0.25s ease-in-out;
+    box-shadow: 0 5px 15px 0 $color_shadow;
+    &:hover {
+        box-shadow: 0 15px 30px 0 $color_shadow;
+        .icon {
+            border-color: $color_primary;
+            span {
+                color: $color_white;
+                background: $color_primary;
+                animation: pulsePrimary 1s 1 ease-in-out forwards;
+                transform: rotateY(360deg);
+            }
+        }
+    }
+    .icon {
+        padding: 15px;
+        margin-bottom: 30px;
+        border-radius: 50%;
+        display: inline-block;
+        transition: all 0.25s ease-in-out;
+        border: 2px dashed $color_primary_light;
+        span {
+            width: 100px;
+            height: 100px;
+            font-size: 40px;
+            line-height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            color: $color_primary;
+            transition: all 0.5s ease;
+            background: $color_primary_light;
+        }
+    }
+    .text {
+        h2 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+        h6 {
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        span {
+            color: $color_primary;
+        }
+    }
+    .list {
+        margin: 30px auto;
+        li {
+            margin-bottom: 10px;
+            i {
+                color: $color_primary;
+                margin-right: 10px;
+            }
+        }
+    }
+}
