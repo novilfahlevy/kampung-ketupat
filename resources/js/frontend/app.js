@@ -209,267 +209,38 @@ function HovyLeeCarousel(){
     "use-strict";
 
     // Variables
-    let featuresCarousel        = $( '.features-carousel');
-    let screenshotsCarousel     = $( '.screenshots-carousel');
     let testimonialsCarousel    = $( '.testimonials-carousel');
-    let ourTeamCarousel         = $( '.our-team-carousel');
-    let blogCarousel            = $( '.latest-blogs-carousel');
 
-    if ($( "body" ).hasClass('rtl-mode')) {
-        featuresCarousel.owlCarousel({
-            autoplay: true,
-            autoplaySpeed: 3000,
-            autoplayTimeout: 3000,
-            loop:true,
-            margin:30,
-            rtl:true,
-            dots:true,
-            nav:false,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:1
-                },
-                768:{
-                    items:2
-                },
-                1000:{
-                    items:3
-                }
+    testimonialsCarousel.owlCarousel({
+        autoplay: true,
+        autoplaySpeed: 3000,
+        autoplayTimeout: 3000,
+        margin:30,
+        dots:true,
+        nav:false,
+        center: true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:1
+            },
+            768:{
+                items:2
+            },
+            1000:{
+                items:3
             }
-        });  
-    }else {
-        featuresCarousel.owlCarousel({
-            autoplay: true,
-            autoplaySpeed: 3000,
-            autoplayTimeout: 3000,
-            loop:true,
-            margin:30,
-            rtl:true,
-            dots:true,
-            nav:false,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:1
-                },
-                768:{
-                    items:2
-                },
-                1000:{
-                    items:3
-                }
+        },
+        onInitialize: function (event) {
+            if ($('.testimonials-carousel.owl-carousel .item').length <= 1) {
+               this.settings.loop = false;
+            } else {
+                this.settings.loop = true;
             }
-        });  
-    }
-
-    if ($( 'body' ).hasClass('rtl-mode')) {
-        screenshotsCarousel.owlCarousel({
-            autoplay: true,
-            autoplaySpeed: 3000,
-            autoplayTimeout: 3000,
-            loop:true,
-            margin:30,
-            dots:true,
-            rtl:true,
-            nav:false,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:1
-                },
-                768:{
-                    items:2
-                },
-                1000:{
-                    items:3
-                }
-            }
-        });
-    } else {
-        screenshotsCarousel.owlCarousel({
-            autoplay: true,
-            autoplaySpeed: 3000,
-            autoplayTimeout: 3000,
-            loop:true,
-            margin:30,
-            dots:true,
-            nav:false,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:1
-                },
-                768:{
-                    items:2
-                },
-                1000:{
-                    items:3
-                }
-            }
-        });
-    }
-
-    if ($( 'body' ).hasClass('rtl-mode')) {
-        testimonialsCarousel.owlCarousel({
-            autoplay: true,
-            autoplaySpeed: 3000,
-            autoplayTimeout: 3000,
-            loop:true,
-            margin:30,
-            dots:true,
-            nav:false,
-            rtl:true,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:1
-                },
-                768:{
-                    items:2
-                },
-                1000:{
-                    items:3
-                }
-            }
-        });
-    } else {
-        testimonialsCarousel.owlCarousel({
-            autoplay: true,
-            autoplaySpeed: 3000,
-            autoplayTimeout: 3000,
-            loop:true,
-            margin:30,
-            dots:true,
-            nav:false,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:1
-                },
-                768:{
-                    items:2
-                },
-                1000:{
-                    items:3
-                }
-            }
-        });
-    }
-
-    if ($( 'body' ).hasClass( 'rtl-mode' )) {
-        ourTeamCarousel.owlCarousel({
-            autoplay: true,
-            autoplaySpeed: 3000,
-            autoplayTimeout: 3000,
-            loop:true,
-            margin:30,
-            dots:true,
-            nav:false,
-            rtl:true,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:1
-                },
-                768:{
-                    items:2
-                },
-                1000:{
-                    items:3
-                }
-            }
-        });
-    } else {
-        ourTeamCarousel.owlCarousel({
-            autoplay: true,
-            autoplaySpeed: 3000,
-            autoplayTimeout: 3000,
-            loop:true,
-            margin:30,
-            dots:true,
-            nav:false,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:1
-                },
-                768:{
-                    items:2
-                },
-                1000:{
-                    items:3
-                }
-            }
-        });
-    }
-
-    if ($( 'body' ).hasClass( 'rtl-mode' )) {
-        blogCarousel.owlCarousel({
-            autoplay: true,
-            autoplaySpeed: 3000,
-            autoplayTimeout: 3000,
-            loop:true,
-            margin:30,
-            dots:true,
-            rtl:true,
-            nav:false,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:1
-                },
-                768:{
-                    items:2
-                },
-                1000:{
-                    items:3
-                }
-            }
-        });
-    } else {
-        blogCarousel.owlCarousel({
-            autoplay: true,
-            autoplaySpeed: 3000,
-            autoplayTimeout: 3000,
-            loop:true,
-            margin:30,
-            dots:true,
-            nav:false,
-            responsive:{
-                0:{
-                    items:1
-                },
-                600:{
-                    items:1
-                },
-                768:{
-                    items:2
-                },
-                1000:{
-                    items:3
-                }
-            }
-        });
-    }
+        }
+    });
 }
 
 /* -------------------------------------------------------------------
