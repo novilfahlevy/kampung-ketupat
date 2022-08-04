@@ -5,15 +5,24 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('admin.dashboard') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                         {{ __('Dashboard') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.ulasan.index')" :active="request()->routeIs('admin.ulasan.index')">
+                        {{ __('Ulasan') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.faq.index')" :active="request()->routeIs('admin.faq.index')">
+                        {{ __('FAQ') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.pengguna.index')" :active="request()->routeIs('admin.pengguna.index')">
+                        {{ __('Pengguna') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -38,6 +47,9 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
+                            <x-dropdown-link :href="route('admin.pengguna.edit', 'profil')">
+                                {{ __('Edit Profil') }}
+                            </x-dropdown-link>
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
@@ -63,7 +75,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>

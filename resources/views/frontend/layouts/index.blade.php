@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Kampung Ketupat kampung penuh warna">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_token" content="{{ csrf_token() }}">
     <title>Kampung Ketupat | Kampung Penuh Warna</title>
 
     <!--// Boostrap v4 //-->

@@ -336,8 +336,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="">
+                <form action="{{ route('send-review') }}" id="sendReviewForm" method="POST">
                     <div class="row">
+                        <div class="col-12">
+                            <div id="sendReviewAlert"></div>
+                        </div>
                         <div class="col-12 mb-4">
                             <div class="d-flex align-items-center justify-content-center gap-3">
                                 <i class="fa fa-star select-none cursor-pointer star"></i>
@@ -346,20 +349,24 @@
                                 <i class="fa fa-star select-none cursor-pointer star"></i>
                                 <i class="fa fa-star select-none cursor-pointer star"></i>
                             </div>
+                            <p class="text-danger text-center error-message mt-2" id="starsErrorMessage"></p>
                             <input type="hidden" name="stars" id="stars">
                         </div>
                         <div class="col-12">
-                            <div class="custom-form-group">
-                                <input type="text" class="custom-form-control" name="name" placeholder="Nama *">
+                            <div class="custom-form-group mb-3">
+                                <input type="text" class="custom-form-control mb-2" name="name" id="name" placeholder="Nama *">
                                 <span class="fa fa-user"></span>
+                                <p class="text-danger error-message" id="nameErrorMessage"></p>
                             </div>
-                            <div class="custom-form-group">
-                                <input type="email" class="custom-form-control" name="email" placeholder="Email *">
+                            <div class="custom-form-group mb-3">
+                                <input type="email" class="custom-form-control mb-2" name="email" id="email" placeholder="Email *">
                                 <span class="fa fa-envelope"></span>
+                                <p class="text-danger error-message" id="emailErrorMessage"></p>
                             </div>
-                            <div class="custom-form-group">
-                                <textarea class="custom-form-control" name="review" id="review" placeholder="Ulasan *" cols="30" rows="10"></textarea>
+                            <div class="custom-form-group mb-3">
+                                <textarea class="custom-form-control mb-2" name="review" id="review" placeholder="Ulasan *" cols="30" rows="10"></textarea>
                                 <span class="fa fa-comment"></span>
+                                <p class="text-danger error-message" id="reviewErrorMessage"></p>
                             </div>
                         </div>
                         <div class="col-12">

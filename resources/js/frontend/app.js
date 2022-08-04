@@ -444,3 +444,43 @@ $('#reviewFormModal').find('.star').click(function() {
         $('#stars').val($stars.index(this) + 1);
     });
 });
+
+$('form#sendReviewForm').submit(function(event) {
+    event.preventDefault();
+
+    $(`#sendReviewAlert`).removeClass('alert alert-danger');
+    $(`#sendReviewAlert`).removeClass('alert alert-success');
+    $(`#sendReviewAlert`).text('');
+    $('.error-message').hide();
+
+    $.ajax({
+        url: $(this).attr('action'),
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content'),
+        },
+        data: {
+            name: $(this).find('#name').val(),
+            email: $(this).find('#email').val(),
+            review: $(this).find('#review').val(),
+            stars: $(this).find('#stars').val(),
+        },
+        dataType: 'json'
+    })
+    .then(response => {
+        $(`#sendReviewAlert`).addClass('alert alert-success');
+        $(`#sendReviewAlert`).text(response.message);
+        setTimeout(() => window.location.reload(), 2000);
+    })
+    .catch(response => {
+        if (response.status == 422) {
+            Object.keys(response.responseJSON.errors).forEach(error => {
+                $(`#${error}ErrorMessage`).show();
+                $(`#${error}ErrorMessage`).text(response.responseJSON.errors[error][0]);
+            });
+        } else {
+            $(`#sendReviewAlert`).addClass('alert alert-danger');
+            $(`#sendReviewAlert`).text(response.responseJSON.message);
+        }
+    });
+});
