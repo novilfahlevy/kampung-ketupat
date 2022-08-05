@@ -47,6 +47,20 @@ trait Upload
         return $filename;
     }
 
+    private function saveAndModify(UploadedFile|string $file, $modifyCallback, $oldFilename = null)
+    {
+        $image = $this->getImageInstance($file);
+        $filename = Str::random(40).'.'.$this->getImageExtension($image);
+        $modifyCallback($image);
+        $image->save(storage_path('app/public/uploads/'.$filename));
+
+        if ($oldFilename) {
+            $this->deleteFile($oldFilename);
+        }
+
+        return $filename;
+    }
+
     private function saveFile(UploadedFile $file, $oldFilename = null)
     {
         $filename = Storage::disk('uploads')->put('/', $file);

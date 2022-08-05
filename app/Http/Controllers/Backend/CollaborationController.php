@@ -36,6 +36,14 @@ class CollaborationController extends Controller
         return view('backend.pages.collaborations.create');
     }
 
+    private function resizeLogo($image)
+    {
+        $width = 200;
+        $height = 200;
+        $image->height() > $image->width() ? $width = null : $height = null;
+        $image->resize($width, $height, fn ($constraint) => $constraint->aspectRatio());
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -48,7 +56,7 @@ class CollaborationController extends Controller
             $collaboration = new Collaboration();
             $collaboration->name = $request->name;
     
-            $filename = $this->resizeAndSave($request->logo_base64, 200, 60);
+            $filename = $this->saveAndModify($request->logo_base64, fn($image) => $this->resizeLogo($image));
             if ($filename) {
                 $collaboration->logo_url = $filename;
                 $collaboration->save();
@@ -104,7 +112,7 @@ class CollaborationController extends Controller
             $collaboration->name = $request->name;
     
             if ($request->logo_base64) {
-                $filename = $this->resizeAndSave($request->logo_base64, 200, 60, $collaboration->logo_url);
+                $filename = $this->saveAndModify($request->logo_base64, fn($image) => $this->resizeLogo($image), $collaboration->logo_url);
                 if ($filename) {
                     $collaboration->logo_url = $filename;
                 }
