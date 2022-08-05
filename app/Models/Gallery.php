@@ -26,4 +26,11 @@ class Gallery extends Model
     {
         return asset('storage/uploads/'.$this->photo_url);
     }
+    
+    // Scopes
+
+    public function scopeKeyword($query, $keyword)
+    {
+        return $query->where('description', 'LIKE', '%'.$keyword.'%');
+    }
 }

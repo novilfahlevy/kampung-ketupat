@@ -9,11 +9,20 @@
 
     <div class="py-12">
         <x-card>
-            <x-button-link href="{{ route('admin.pengguna.create') }}" icon="fas fa-plus" class="mb-5">
-                Tambah Pengguna
-            </x-button-link>
+            <div class="grid grid-cols-1 md:grid-cols-[40%,1fr] lg:grid-cols-[30%,1fr] gap-3 mb-5 md:mb-0">
+                <div>
+                    <x-button-link href="{{ route('admin.pengguna.create') }}" icon="fas fa-plus" class="mb-5">
+                        Tambah Pengguna
+                    </x-button-link>
+                </div>
+                <div>
+                    <form method="GET" action="{{ route('admin.pengguna.index') }}">
+                        <x-input type="text" class="w-full block" placeholder="Cari..." name="keyword" value="{{ request()->query->get('keyword') }}" />
+                    </form>
+                </div>
+            </div>
             
-            <div class="relative">
+            <div class="relative mb-5">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>

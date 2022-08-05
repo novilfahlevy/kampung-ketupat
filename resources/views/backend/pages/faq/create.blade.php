@@ -13,7 +13,7 @@
 
 		<form action="{{ route('admin.faq.store') }}" method="POST">
 			@csrf
-			<div class="grid grid-cols-2 gap-5 mb-5">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-5">
 				<div>
 					<label for="question">Pertanyaan</label>
 					<x-textarea class="block mt-1 w-full" name="question" id="question" required autofocus>

@@ -19,9 +19,16 @@ class FaqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $faqs = Faq::paginate(10);
+        $faqs = Faq::query();
+
+        if ($request->query->has('keyword')) {
+            $faqs->keyword($request->query->get('keyword'));
+        }
+
+        $faqs = $faqs->paginate(10);
+
         return view('backend.pages.faq.index', compact('faqs'));
     }
     
@@ -49,6 +56,7 @@ class FaqController extends Controller
             $faq->answer = $request->answer;
 
             $faq->save();
+
             $this->logAction('Menambah pertanyaan "'.$request->question.'"');
 
             return redirect()->route('admin.faq.index')->with('response', ['status' => 200, 'message' => 'Berhasil menambah pertanyaan']);
@@ -96,6 +104,7 @@ class FaqController extends Controller
             $faq->answer = $request->answer;
 
             $faq->save();
+
             $this->logAction('Mengedit pertanyaan "'.$request->question.'"');
 
             return redirect()->back()->with('response', ['status' => 200, 'message' => 'Berhasil mengedit pertanyaan']);

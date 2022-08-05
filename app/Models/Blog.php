@@ -31,4 +31,11 @@ class Blog extends Model
     {
         return asset('storage/uploads/'.$this->thumbnail_url);
     }
+
+    // Scopes
+
+    public function scopeKeyword($query, $keyword)
+    {
+        return $query->where('title', 'LIKE', '%'.$keyword.'%');
+    }
 }

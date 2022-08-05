@@ -21,9 +21,16 @@ class GalleryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $galleries = Gallery::paginate(10);
+        $galleries = Gallery::query();
+
+        if ($request->query->has('keyword')) {
+            $galleries->keyword($request->query->get('keyword'));
+        }
+
+        $galleries = $galleries->paginate(10);
+        
         return view('backend.pages.galleries.index', compact('galleries'));
     }
 
@@ -118,7 +125,7 @@ class GalleryController extends Controller
 
             $gallery->save();
 
-            $this->logAction('Mengedit foto galeri');
+            $this->logAction('Mengedit foto di galeri');
 
             return redirect()->back()->with('response', ['status' => 200, 'message' => 'Berhasil mengedit foto di galeri']);
         } catch (Exception $error) {

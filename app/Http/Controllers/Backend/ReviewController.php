@@ -17,9 +17,16 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $reviews = Review::orderBy('is_public')->orderByDesc('stars')->paginate(10);
+        $reviews = Review::query();
+
+        if ($request->query->has('keyword')) {
+            $reviews->keyword($request->query->get('keyword'));
+        }
+
+        $reviews = $reviews->orderBy('is_public')->orderByDesc('stars')->paginate(10);
+        
         return view('backend.pages.reviews.index', compact('reviews'));
     }
 
@@ -100,8 +107,8 @@ class ReviewController extends Controller
     {
         try {
             $review = Review::find($id);
-            $review->delete();
             $this->logAction('Menghapus ulasan');
+            $review->delete();
 
             return back()->with('response', ['status' => 200, 'message' => 'Berhasil menghapus ulasan']);
         } catch (Exception $error) {

@@ -17,4 +17,14 @@ class Review extends Model
     {
         return $this->is_public ? 'Terpublikasi' : 'Belum terpublikasi';
     }
+
+    // Scopes
+
+    public function scopeKeyword($query, $keyword)
+    {
+        return $query
+            ->where('name', 'LIKE', '%'.$keyword.'%')
+            ->orWhere('email', 'LIKE', '%'.$keyword.'%')
+            ->orWhere('review', 'LIKE', '%'.$keyword.'%');
+    }
 }

@@ -20,9 +20,16 @@ class CollaborationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $collaborations = Collaboration::paginate(10);
+        $collaborations = Collaboration::query();
+
+        if ($request->query->has('keyword')) {
+            $collaborations->keyword($request->query->get('keyword'));
+        }
+
+        $collaborations = $collaborations->paginate(10);
+
         return view('backend.pages.collaborations.index', compact('collaborations'));
     }
 
@@ -62,7 +69,7 @@ class CollaborationController extends Controller
                 $collaboration->save();
             }
 
-            $this->logAction('Membuat pihak kerjasama "'.$request->name.'"');
+            $this->logAction('Membuat pihak kerja sama dengan "'.$request->name.'"');
 
             return redirect()
                 ->route('admin.kerjasama.index')
@@ -120,7 +127,7 @@ class CollaborationController extends Controller
 
             $collaboration->save();
 
-            $this->logAction('Mengedit pihak kerjasama "'.$request->name.'"');
+            $this->logAction('Mengedit pihak kerja sama dengan "'.$request->name.'"');
 
             return redirect()
                 ->back()
@@ -147,7 +154,7 @@ class CollaborationController extends Controller
 
             $collaboration->delete();
 
-            $this->logAction('Menghapus pihak "'.$name.'"');
+            $this->logAction('Menghapus pihak kerja sama dengan "'.$name.'"');
 
             return redirect()->back()->with('response', [
                 'status' => 200,

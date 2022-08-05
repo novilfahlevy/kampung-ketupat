@@ -9,11 +9,13 @@
 
     <div class="py-12">
         <x-card>
-            {{-- <x-button-link href="{{ route('admin.pengguna.create') }}" icon="fas fa-plus" class="mb-5">
-                Tambah Pengguna
-            </x-button-link> --}}
-            
-            <div class="relative">
+            <div class="mb-5">
+                <form method="GET" action="{{ route('admin.ulasan.index') }}">
+                    <x-input type="text" class="w-full block" placeholder="Cari..." name="keyword" value="{{ request()->query->get('keyword') }}" />
+                </form>
+            </div>
+
+            <div class="relative mb-5">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>

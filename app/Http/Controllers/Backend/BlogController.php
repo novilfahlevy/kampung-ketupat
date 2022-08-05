@@ -22,9 +22,16 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $blogs = Blog::paginate(10);
+        $blogs = Blog::query();
+
+        if ($request->query->has('keyword')) {
+            $blogs->keyword($request->query->get('keyword'));
+        }
+
+        $blogs = $blogs->paginate(10);
+
         return view('backend.pages.blogs.index', compact('blogs'));
     }
 

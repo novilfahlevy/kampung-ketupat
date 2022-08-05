@@ -26,4 +26,11 @@ class Collaboration extends Model
     {
         return asset('storage/uploads/'.$this->logo_url);
     }
+
+    // Scopes
+
+    public function scopeKeyword($query, $keyword)
+    {
+        return $query->where('name', 'LIKE', '%'.$keyword.'%');
+    }
 }
