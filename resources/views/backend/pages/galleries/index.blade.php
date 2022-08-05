@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Pihak Kerja Sama') }}
+            {{ __('Galeri') }}
         </h2>
     </x-slot>
 
@@ -9,8 +9,8 @@
 
     <div class="py-12">
         <x-card>
-            <x-button-link href="{{ route('admin.kerjasama.create') }}" icon="fas fa-plus" class="mb-5">
-                Tambah Pihak Kerja Sama
+            <x-button-link href="{{ route('admin.galeri.create') }}" icon="fas fa-plus" class="mb-5">
+                Tambah Foto
             </x-button-link>
             
             <div class="relative">
@@ -21,10 +21,10 @@
                                 No
                             </th>
                             <th scope="col" class="py-3 px-6">
-                                Logo
+                                Foto
                             </th>
                             <th scope="col" class="py-3 px-6">
-                                Nama
+                                Deskripsi
                             </th>
                             <th scope="col" class="py-3 px-6">
                                 Tanggal Dibuat
@@ -35,19 +35,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($collaborations as $collaboration)
+                        @foreach ($galleries as $gallery)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td class="py-4 px-6">
-                                {{ (($collaborations->perPage() * $collaborations->currentPage()) - $collaborations->perPage()) + ($loop->index + 1) }}
+                                {{ (($galleries->perPage() * $galleries->currentPage()) - $galleries->perPage()) + ($loop->index + 1) }}
                             </td>
                             <td class="py-4 px-6">
-                                <img src="{{ $collaboration->logo }}" alt="Logo">
+                                <img src="{{ $gallery->photo }}" class="w-[100px] h-[100px]" alt="Photo">
                             </td>
                             <td class="py-4 px-6">
-                                {{ $collaboration->name }}
+                                {{ $gallery->description }}
                             </td>
                             <td class="py-4 px-6">
-                                {{ $collaboration->created_at->translatedFormat('d F Y') }}
+                                {{ $gallery->created_at->translatedFormat('d F Y') }}
                             </td>
                             <td class="py-4 px-6">
                                 <x-dropdown align="right" width="48">
@@ -60,15 +60,15 @@
                                     </x-slot>
                 
                                     <x-slot name="content">
-                                        <x-dropdown-link :href="route('admin.kerjasama.edit', $collaboration->id)">
+                                        <x-dropdown-link :href="route('admin.galeri.edit', $gallery->id)">
                                             {{ __('Edit') }}
                                         </x-dropdown-link>
 
-                                        <form method="POST" action="{{ route('admin.kerjasama.destroy', $collaboration->id) }}">
+                                        <form method="POST" action="{{ route('admin.galeri.destroy', $gallery->id) }}">
                                             @csrf
                                             @method('DELETE')
                                             <x-dropdown-link
-                                                :href="route('admin.kerjasama.destroy', $collaboration->id)"
+                                                :href="route('admin.galeri.destroy', $gallery->id)"
                                                 onclick="event.preventDefault();
                                                 confirm('Apakah anda yakin ingin menghapus data ini?') &&
                                                 this.closest('form').submit();"
@@ -85,7 +85,7 @@
                 </table>
             </div>
 
-            {{ $collaborations->links() }}
+            {{ $galleries->links() }}
         </x-card>
     </div>
 </x-app-layout>

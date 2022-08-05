@@ -23,11 +23,17 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'name' => 'required',
             'email' => 'required',
-            // 'password' => 'min:8|confirmed'
         ];
+
+        // Check if password is want to be changed
+        if (!$this->isEmptyString('password')) {
+            $rules['password'] = 'min:8|confirmed';
+        }
+
+        return $rules;
     }
 
     public function messages()

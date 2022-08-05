@@ -123,7 +123,7 @@ class CollaborationController extends Controller
             $this->logAction('Mengedit pihak kerjasama "'.$request->name.'"');
 
             return redirect()
-                ->route('admin.kerjasama.index')
+                ->back()
                 ->with('response', ['status' => 200, 'message' => 'Berhasil mengedit pihak kerjasama']);
         } catch (Exception $error) {
             app('sentry')->captureException($error);
@@ -149,13 +149,13 @@ class CollaborationController extends Controller
 
             $this->logAction('Menghapus pihak "'.$name.'"');
 
-            return redirect()->back()->with('alert', [
+            return redirect()->back()->with('response', [
                 'status' => 200,
                 'message' => 'Berhasil menghapus pihak kerjasama'
             ]);
         } catch (Exception $error) {
             app('sentry')->captureException($error);
-            return redirect()->back()->with('alert', [
+            return redirect()->back()->with('response', [
                 'status' => $error->getCode(),
                 'message' => 'Gagal menghapus pihak kerjasama, silakan coba lagi'
             ]);

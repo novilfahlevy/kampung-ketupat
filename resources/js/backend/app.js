@@ -17,20 +17,34 @@ Filepond.registerPlugin(
 );
 
 window.initFilepond = function(element, config = {}) {
-  const inputHidden = document.createElement('input');
-  inputHidden.type = 'hidden';
-  inputHidden.name = `${element.id}_base64`;
-  inputHidden.id = `${element.id}_base64`;
+  const inputHiddenContainer = document.createElement('div');
+  inputHiddenContainer.id = 'inputHiddenContainer';
+  element.parentElement.appendChild(inputHiddenContainer);
 
-  element.parentElement.appendChild(inputHidden);
+  const createInputHidden = ({ file, index, multiple }) => {
+    const inputHidden = document.createElement('input');
+    inputHidden.type = 'hidden';
+    inputHidden.name = multiple ? `${element.id}_base64[${index}]` : `${element.id}_base64`;
+    inputHidden.id = multiple ? `${element.id}_base64_${index}` : `${element.id}_base64`;
+    inputHidden.value = file.getFileEncodeDataURL();
+    return inputHidden;
+  }
 
   Filepond.create(element, {
     labelIdle: `<span class="filepond--label-action">Letakan gambar disini</span>`,
-    onaddfile(_, file) {
-      document.getElementById(`${element.id}_base64`).value = file.getFileEncodeDataURL();
-    },
-    onremovefile() {
-      document.getElementById(`${element.id}_base64`).value = '';
+    onupdatefiles(files) {
+      document.getElementById('inputHiddenContainer').innerHTML = '';
+
+      if (element.multiple) {
+        files.map((file, index) => {
+          document.getElementById('inputHiddenContainer').appendChild(createInputHidden({ file, index, multiple: true }));
+        });
+      } else {
+        if (files.length) {
+          console.log(files[0])
+          document.getElementById('inputHiddenContainer').appendChild(createInputHidden({ file: files[0], multiple: false }));
+        }
+      }
     },
     ...config,
   });

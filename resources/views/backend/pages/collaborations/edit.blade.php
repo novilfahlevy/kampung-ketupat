@@ -1,9 +1,11 @@
 <x-app-layout>
 	<x-slot name="header">
 		<h2 class="font-semibold text-xl text-gray-800 leading-tight">
-			{{ __('Pihak Kerjasama') }}
+			{{ __('Pihak Kerja Sama') }}
 		</h2>
 	</x-slot>
+
+	<x-alert />
 	
 	<div class="py-12">
 		<x-card>
@@ -23,14 +25,14 @@
 						@enderror
 					</div>
 					<div>
-						<label class="block mb-1" for="answer">Logo</label>
+						<label class="block mb-1" for="logo">Logo</label>
 						<input type="file" class="filepond" name="logo" id="logo" accept="image/png, image/jpeg" />
 						@error('logo_base64')
 						<p class="text-red-800">{{ $message }}</p>
 						@enderror
 					</div>
 				</div>
-				<x-button type="submit" color="green">Edit Pihak Kerjasama</x-button>
+				<x-button type="submit" color="green">Edit Pihak Kerja Sama</x-button>
 			</form>
 		</x-card>
 	</div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\CollaborationController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\FaqController;
+use App\Http\Controllers\Backend\GalleryController as BackendGalleryController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -32,6 +33,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('/faq', FaqController::class);
     Route::resource('/ulasan', ReviewController::class);
     Route::resource('/kerjasama', CollaborationController::class);
+    Route::resource('/galeri', BackendGalleryController::class);
 });
 
 
