@@ -34,9 +34,9 @@
 						<x-input type="number" class="block mt-1 mb-3 w-full" :value="$review->stars" disabled />
 						<div>
 							<label for="is_public" class="block mb-2">Publikasi</label>
-							<select name="is_public" id="is_public">
-								<option value="">Tutup publikasi</option>
-								<option value="1" {{ $review->is_public ? 'selected' : '' }}>Publikasikan</option>
+							<select class="w-full" name="is_public" id="is_public">
+								<option value="">Tidak publik</option>
+								<option value="1" {{ $review->is_public ? 'selected' : '' }}>Publik</option>
 							</select>
 						</div>
 					</div>

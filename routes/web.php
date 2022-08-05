@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Backend\BlogController as BackendBlogController;
+use App\Http\Controllers\Backend\GalleryController as BackendGalleryController;
 use App\Http\Controllers\Backend\CollaborationController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\FaqController;
-use App\Http\Controllers\Backend\GalleryController as BackendGalleryController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\UserController;
+
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\GalleryController;
@@ -34,6 +36,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('/ulasan', ReviewController::class);
     Route::resource('/kerjasama', CollaborationController::class);
     Route::resource('/galeri', BackendGalleryController::class);
+    Route::resource('/blog', BackendBlogController::class);
 });
 
 

@@ -18,7 +18,7 @@ Filepond.registerPlugin(
 
 window.initFilepond = function(element, config = {}) {
   const inputHiddenContainer = document.createElement('div');
-  inputHiddenContainer.id = 'inputHiddenContainer';
+  inputHiddenContainer.id = `inputHiddenContainer_${element.id}`;
   element.parentElement.appendChild(inputHiddenContainer);
 
   const createInputHidden = ({ file, index, multiple }) => {
@@ -33,16 +33,16 @@ window.initFilepond = function(element, config = {}) {
   Filepond.create(element, {
     labelIdle: `<span class="filepond--label-action">Letakan gambar disini</span>`,
     onupdatefiles(files) {
-      document.getElementById('inputHiddenContainer').innerHTML = '';
+      document.getElementById(`inputHiddenContainer_${element.id}`).innerHTML = '';
 
       if (element.multiple) {
         files.map((file, index) => {
-          document.getElementById('inputHiddenContainer').appendChild(createInputHidden({ file, index, multiple: true }));
+          document.getElementById(`inputHiddenContainer_${element.id}`).appendChild(createInputHidden({ file, index, multiple: true }));
         });
       } else {
         if (files.length) {
           console.log(files[0])
-          document.getElementById('inputHiddenContainer').appendChild(createInputHidden({ file: files[0], multiple: false }));
+          document.getElementById(`inputHiddenContainer_${element.id}`).appendChild(createInputHidden({ file: files[0], multiple: false }));
         }
       }
     },

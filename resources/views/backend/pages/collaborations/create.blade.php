@@ -5,6 +5,8 @@
 	</h2>
 </x-slot>
 
+<x-alert />
+
 <div class="py-12">
 	<x-card>
 		<x-button-link href="{{ route('admin.kerjasama.index') }}" icon="fas fa-chevron-left" class="mb-5">
