@@ -11,7 +11,7 @@ class Review extends Model
 
     protected $fillable = ['name', 'email', 'review', 'stars', 'is_public'];
 
-    // Attributes
+    // Custom Attributes
 
     public function getStatusAttribute()
     {

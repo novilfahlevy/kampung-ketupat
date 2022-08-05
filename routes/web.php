@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\CollaborationController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\ReviewController;
@@ -30,6 +31,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('/pengguna', UserController::class);
     Route::resource('/faq', FaqController::class);
     Route::resource('/ulasan', ReviewController::class);
+    Route::resource('/kerjasama', CollaborationController::class);
 });
 
 

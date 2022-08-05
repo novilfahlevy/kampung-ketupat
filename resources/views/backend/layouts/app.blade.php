@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ asset('storage/fonts/font_awesome/css/all.css') }}">
 
         <!-- Scripts -->
-        @vite(['resources/css/backend/app.scss', 'resources/js/backend/app.js'])
+        @vite(['resources/css/backend/app.scss'])
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -32,5 +32,11 @@
                 {{ $slot }}
             </main>
         </div>
+
+        @vite(['resources/js/backend/app.js'])
+
+        @isset($script)
+        {{ $script }}
+        @endisset
     </body>
 </html>

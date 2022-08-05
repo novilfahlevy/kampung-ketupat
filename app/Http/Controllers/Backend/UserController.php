@@ -57,7 +57,7 @@ class UserController extends Controller
             return redirect()->route('admin.pengguna.index')->with('response', ['status' => 200, 'message' => 'Berhasil membuat pengguna']);
         } catch (Exception $error) {
             app('sentry')->captureException($error);
-            return redirect()->route('admin.pengguna.index')->with('response', ['status' => 200, 'message' => 'Gagal membuat pengguna, silakan coba lagi']);
+            return redirect()->route('admin.pengguna.index')->with('response', ['status' => $error->getCode(), 'message' => 'Gagal membuat pengguna, silakan coba lagi']);
         }
     }
 
@@ -107,7 +107,7 @@ class UserController extends Controller
             return redirect()->back()->with('response', ['status' => 200, 'message' => 'Berhasil mengedit profil']);
         } catch (Exception $error) {
             app('sentry')->captureException($error);
-            return redirect()->back()->with('response', ['status' => 200, 'message' => 'Gagal mengedit profil, silakan coba lagi']);
+            return redirect()->back()->with('response', ['status' => $error->getCode(), 'message' => 'Gagal mengedit profil, silakan coba lagi']);
         }
     }
 

@@ -86,7 +86,7 @@ class ReviewController extends Controller
             return redirect()->back()->with('response', ['status' => 200, 'message' => 'Berhasil mengedit ulasan']);
         } catch (Exception $error) {
             app('sentry')->captureException($error);
-            return redirect()->back()->with('response', ['status' => 200, 'message' => 'Gagal mengedit ulasan, silakan coba lagi']);
+            return redirect()->back()->with('response', ['status' => $error->getCode(), 'message' => 'Gagal mengedit ulasan, silakan coba lagi']);
         }
     }
 

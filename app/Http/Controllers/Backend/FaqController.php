@@ -54,7 +54,7 @@ class FaqController extends Controller
             return redirect()->route('admin.faq.index')->with('response', ['status' => 200, 'message' => 'Berhasil menambah pertanyaan']);
         } catch (Exception $error) {
             app('sentry')->captureException($error);
-            return redirect()->route('admin.faq.index')->with('response', ['status' => 200, 'message' => 'Gagal menambah pertanyaan, silakan coba lagi']);
+            return redirect()->route('admin.faq.index')->with('response', ['status' => $error->getCode(), 'message' => 'Gagal menambah pertanyaan, silakan coba lagi']);
         }
     }
 
@@ -101,7 +101,7 @@ class FaqController extends Controller
             return redirect()->back()->with('response', ['status' => 200, 'message' => 'Berhasil mengedit pertanyaan']);
         } catch (Exception $error) {
             app('sentry')->captureException($error);
-            return redirect()->back()->with('response', ['status' => 200, 'message' => 'Gagal mengedit pertanyaan, silakan coba lagi']);
+            return redirect()->back()->with('response', ['status' => $error->getCode(), 'message' => 'Gagal mengedit pertanyaan, silakan coba lagi']);
         }
     }
 
