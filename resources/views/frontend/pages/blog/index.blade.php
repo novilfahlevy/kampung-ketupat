@@ -78,7 +78,7 @@
             </div>
             @endforelse
 			<div class="col-12">
-				{{ $blogs->links('frontend.pages.blog.pagination') }}
+				{{ $blogs->links('frontend.pagination') }}
 			</div>
         </div>
     </div>

@@ -28,8 +28,8 @@
 
 <section class="section" id="gallerySection">
 	<div class="container">
-		<div class="row justify-content-center">
-			@foreach ($galleries->chunk(3) as $chunk)
+		<div class="row justify-content-center align-items-start">
+			@foreach ($galleries->chunk(ceil($galleries->count() / 3)) as $chunk)
 			<div class="col-12 col-md-4 col-lg-3 col-xl-4">
 				@foreach ($chunk as $gallery)
 				<div class="card card-body shadow mb-3">
@@ -40,6 +40,9 @@
 				@endforeach
 			</div>
 			@endforeach
+			<div class="col-12 d-flex justify-content-center mt-5">
+				{{ $galleries->links('frontend.pagination') }}
+			</div>
 		</div>
 	</div>
 </section>
