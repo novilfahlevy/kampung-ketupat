@@ -32,9 +32,11 @@
 			@foreach ($galleries->chunk(3) as $chunk)
 			<div class="col-12 col-md-4 col-lg-3 col-xl-4">
 				@foreach ($chunk as $gallery)
-				<a href="{{ $gallery->photo }}" data-title="{{ $gallery->description }}" data-lightbox="galeri" data-alt="Galeri">
-					<img src="{{ $gallery->photo }}" class="w-full mb-3">
-				</a>
+				<div class="card card-body shadow mb-3">
+					<a href="{{ $gallery->photo }}" data-title="{{ $gallery->description }}" data-lightbox="galeri" data-alt="Galeri">
+						<img src="{{ $gallery->photo }}" class="w-full">
+					</a>
+				</div>
 				@endforeach
 			</div>
 			@endforeach

@@ -238,6 +238,7 @@ function HovyLeeCarousel(){
         autoplay: true,
         autoplaySpeed: 2000,
         autoplayTimeout: 2000,
+        slideTransition: 'linear',
         loop: true,
         center: true,
     });

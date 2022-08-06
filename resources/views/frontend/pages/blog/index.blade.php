@@ -47,7 +47,7 @@
                 <div class="blog-item">
                     <div class="img">
                         <a href="{{ route('blog.show', $blog->slug) }}">
-                            <img src="{{ $blog->thumbnail }}" alt="Blog image" class="img-fluid" />
+                            <img src="{{ $blog->medium_thumbnail }}" alt="Blog image" class="img-fluid" />
                         </a>
                     </div>
                     <div class="body">

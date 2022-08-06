@@ -50,7 +50,7 @@
                                 {{ (($blogs->perPage() * $blogs->currentPage()) - $blogs->perPage()) + ($loop->index + 1) }}
                             </td>
                             <td class="py-4 px-6">
-                                <img src="{{ $blog->thumbnail }}" class="w-[200px] h-[100px]" alt="Photo">
+                                <img src="{{ $blog->medium_thumbnail }}" class="w-[200px] h-[100px]" alt="Photo">
                             </td>
                             <td class="py-4 px-6">
                                 {{ $blog->title }}

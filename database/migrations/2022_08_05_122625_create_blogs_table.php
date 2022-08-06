@@ -19,7 +19,9 @@ return new class extends Migration
             $table->text('title');
             $table->text('slug');
             $table->longText('content');
-            $table->string('thumbnail_url', 50);
+            $table->string('big_thumbnail_url', 50)->comment('800x600');
+            $table->string('medium_thumbnail_url', 50)->comment('600x400');
+            $table->string('small_thumbnail_url', 50)->comment('100x100');
             $table->boolean('is_public')->default(true);
             $table->timestamps();
         });

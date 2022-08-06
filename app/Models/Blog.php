@@ -10,13 +10,15 @@ class Blog extends Model
 {
     use HasFactory, Upload;
 
-    protected $fillable = ['user_id', 'title', 'slug', 'content', 'thumbnail_url', 'is_public'];
+    protected $fillable = ['user_id', 'title', 'slug', 'content', 'big_thumbnail_url', 'medium_thumbnail_url', 'small_thumbnail_url', 'is_public'];
 
     protected static function boot()
     {
         parent::boot();
         static::deleted(function(self $blog) {
-            $blog->deleteFile($blog->thumbnail_url);
+            $blog->deleteFile($blog->big_thumbnail_url);
+            $blog->deleteFile($blog->medium_thumbnail_url);
+            $blog->deleteFile($blog->small_thumbnail_url);
         });
     }
 
@@ -34,9 +36,19 @@ class Blog extends Model
 
     // Custom Attributes
 
-    public function getThumbnailAttribute()
+    public function getBigThumbnailAttribute()
     {
-        return asset('storage/uploads/'.$this->thumbnail_url);
+        return asset('storage/uploads/'.$this->big_thumbnail_url);
+    }
+
+    public function getMediumThumbnailAttribute()
+    {
+        return asset('storage/uploads/'.$this->medium_thumbnail_url);
+    }
+
+    public function getSmallThumbnailAttribute()
+    {
+        return asset('storage/uploads/'.$this->small_thumbnail_url);
     }
 
     public function getUsernameAttribute()
@@ -56,8 +68,9 @@ class Blog extends Model
         return $query->where('title', 'LIKE', '%'.$keyword.'%');
     }
 
-    public function scopeRecent($query, $limit = 3)
+    public function scopeRecent($query, $limit = 3, $slug = null)
     {
+        if ($slug) $query->where('slug', '!=', $slug);
         return $query->orderByDesc('created_at')->take($limit);
     }
 

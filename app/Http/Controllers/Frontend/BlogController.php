@@ -15,7 +15,7 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        $blogs = Blog::query();
+        $blogs = Blog::query()->public();
 
         if ($request->query->has('keyword')) {
             $blogs->keyword($request->query->get('keyword'));
@@ -56,7 +56,8 @@ class BlogController extends Controller
     public function show($slug)
     {
         $blog = Blog::whereSlug($slug)->public()->firstOrFail();
-        return view('frontend.pages.blog.show', compact('blog'));
+        $recents = Blog::public()->recent(5, $slug)->get();
+        return view('frontend.pages.blog.show', compact('blog', 'recents'));
     }
 
     /**

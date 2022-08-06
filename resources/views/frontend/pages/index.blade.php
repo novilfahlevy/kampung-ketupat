@@ -39,6 +39,7 @@
                 </div>
             </div>
         </div>
+        @if (!$collaborations->isEmpty())
         <div class="kerjasama-carousel owl-carousel owl-theme mb-20">
             @foreach ($collaborations as $collaboration)
             <div class="item">
@@ -46,6 +47,9 @@
             </div>
             @endforeach
         </div>
+        @else
+        <p class="text-center">Belum ada pihak kerja sama</p>
+        @endif
     </div>
 </section>
 <!--// Kerjasama Section End //-->
@@ -60,6 +64,7 @@
                 </div>
             </div>
         </div>
+        @if (!$recentGalleries->isEmpty())
         <div class="gallery-carousel owl-carousel owl-theme mb-20">
             @foreach ($recentGalleries as $gallery)
             <div class="item d-flex justify-content-center">
@@ -74,6 +79,9 @@
                 <a href="{{ route('galeri.index') }}" class="primary-btn">Lihat Selengkapnya</a>
             </div>
         </div>
+        @else
+        <p class="text-center">Belum ada foto di galeri</p>
+        @endif
     </div>
 </section>
 <!--// Galeri Section End //-->
@@ -91,13 +99,14 @@
                 </div>
             </div>
         </div>
+        @if (!$recentBlogs->isEmpty())
         <div class="row justify-content-center mb-20">
             @foreach ($recentBlogs as $blog)
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="blog-item">
                     <div class="img">
                         <a href="{{ route('blog.show', $blog->slug) }}">
-                            <img src="{{ $blog->thumbnail }}" alt="Blog image" class="img-fluid" />
+                            <img src="{{ $blog->medium_thumbnail }}" alt="Blog image" class="img-fluid" />
                         </a>
                     </div>
                     <div class="body">
@@ -128,6 +137,9 @@
                 <a href="{{ route('blog.index') }}" class="primary-btn">Lihat Selengkapnya</a>
             </div>
         </div>
+        @else
+        <p class="text-center">Belum ada pihak kerja sama</p>
+        @endif
     </div>
 </section>
 <!--// Blogs Section End //-->
@@ -145,6 +157,7 @@
                 </div>
             </div>
         </div>
+        @if (!$reviews->isEmpty())
         <div class="testimonials-carousel owl-carousel owl-theme mb-20">
             @foreach ($reviews as $review)
             <div class="item">
@@ -168,6 +181,9 @@
             </div>
             @endforeach
         </div>
+        @else
+        <p class="text-center mb-5">Belum ada ulasan</p>
+        @endif
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
                 <button type="button" class="primary-btn" id="reviewFormButton">Tulis Ulasan</button>
@@ -178,6 +194,7 @@
 <!--// Testimonials Section End //-->
 
 <!--// FAQ Section Start //-->
+@if (!$faqs->isEmpty())
 <section class="section bg-light-grey" id="faq-area">
     <div class="container">
         <div class="row justify-content-center">
@@ -212,6 +229,7 @@
     </div>
 </section>
 <!--// FAQ Section End //-->
+@endif
 @endsection
 
 @push('modal')

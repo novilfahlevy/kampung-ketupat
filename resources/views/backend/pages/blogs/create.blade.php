@@ -29,7 +29,7 @@
 					<p class="text-red-800">{{ $message }}</p>
 					@enderror
 				</div>
-				<div>
+				{{-- <div>
 					<label class="block mb-1" for="photos">Foto</label>
 					<input
 						type="file"
@@ -45,7 +45,7 @@
 					@error('photos_base64.*')
 					<p class="text-red-800">{{ $message }}</p>
 					@enderror
-				</div>
+				</div> --}}
 				<div class="grid grid-cols-2 gap-5">
 					<div>
 						<label for="title">Judul</label>
@@ -83,7 +83,7 @@
 			return {
 				init() {
 					initFilepond(document.getElementById('thumbnail'));
-					initFilepond(document.getElementById('photos'));
+					// initFilepond(document.getElementById('photos'));
 
 					initEditor('contentEditor')
 						.then(editor => {

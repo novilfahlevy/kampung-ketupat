@@ -62,11 +62,26 @@ class BlogController extends Controller
             $blog->content = $request->content;
             $blog->is_public = !!$request->is_public;
     
-            $filename = $this->resizeAndSave($request->thumbnail_base64, 600, 400);
-            if ($filename) {
-                $blog->thumbnail_url = $filename;
+            $thumbnail = $request->thumbnail_base64;
+            if ($thumbnail) {
+                $bigThumbnailFilename = $this->resizeAndSave($thumbnail, 800, 600);
+                if ($bigThumbnailFilename) {
+                    $blog->big_thumbnail_url = $bigThumbnailFilename;
+                }
+    
+                $mediumThumbnailFilename = $this->resizeAndSave($thumbnail, 600, 400);
+                if ($mediumThumbnailFilename) {
+                    $blog->medium_thumbnail_url = $mediumThumbnailFilename;
+                }
+    
+                $smallThumbnailFilename = $this->resizeAndSave($thumbnail, 100, 100);
+                if ($smallThumbnailFilename) {
+                    $blog->small_thumbnail_url = $smallThumbnailFilename;
+                }
+                
                 $blog->save();
             }
+
 
             $photos = $request->photos_base64;
             if ($photos) {
@@ -136,9 +151,19 @@ class BlogController extends Controller
 
             $thumbnail = $request->thumbnail_base64;
             if ($thumbnail) {
-                $filename = $this->resizeAndSave($thumbnail, 600, 400, $blog->thumbnail_url);
-                if ($filename) {
-                    $blog->thumbnail_url = $filename;
+                $bigThumbnailFilename = $this->resizeAndSave($thumbnail, 800, 600, $blog->big_thumbnail_url);
+                if ($bigThumbnailFilename) {
+                    $blog->big_thumbnail_url = $bigThumbnailFilename;
+                }
+
+                $mediumThumbnailFilename = $this->resizeAndSave($thumbnail, 600, 400, $blog->medium_thumbnail_url);
+                if ($mediumThumbnailFilename) {
+                    $blog->medium_thumbnail_url = $mediumThumbnailFilename;
+                }
+
+                $smallThumbnailFilename = $this->resizeAndSave($thumbnail, 100, 100, $blog->small_thumbnail_url);
+                if ($smallThumbnailFilename) {
+                    $blog->small_thumbnail_url = $smallThumbnailFilename;
                 }
             }
 
