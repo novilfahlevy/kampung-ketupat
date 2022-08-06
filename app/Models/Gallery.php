@@ -33,4 +33,9 @@ class Gallery extends Model
     {
         return $query->where('description', 'LIKE', '%'.$keyword.'%');
     }
+
+    public function scopeRecent($query, $limit = 6)
+    {
+        return $query->orderByDesc('created_at')->take($limit);
+    }
 }

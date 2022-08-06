@@ -2,7 +2,7 @@
 
 @section('content')
 <!--// Hero Section Start //-->
-<section class="hero-banner bg-overlay" id="home" data-bg-image-path="{{ asset('storage/img/header.png') }}">
+<section class="hero-banner bg-overlay" id="home" data-bg-image-path="{{ asset('storage/uploads/'.$setting['header_background_url']) }}">
     <div id="heroparticles"></div>
     <div class="container h-100">
         <div class="row align-items-center justify-content-center">
@@ -22,7 +22,7 @@
     <div class="container">
         <h2 class="mb-5 text-center">Lokasi</h2>
         <div class="custom-card">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.652932174733!2d117.15012201542001!3d-0.5216927354187605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df67f93fc6a90bb%3A0x6b206598b103ec0c!2sKampung%20Ketupat!5e0!3m2!1sid!2sid!4v1659330964343!5m2!1sid!2sid" class="rounded w-100" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="{{ $setting['location'] }}" class="rounded w-100" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 </section>
@@ -40,18 +40,11 @@
             </div>
         </div>
         <div class="kerjasama-carousel owl-carousel owl-theme mb-20">
+            @foreach ($collaborations as $collaboration)
             <div class="item">
-                <img src="{{ asset('storage/img/team/team-img-1.png') }}" alt="Screenshots image" class="img-fluid h-100">
+                <img src="{{ $collaboration->logo }}" alt="{{ $collaboration->name }}" class="img-fluid h-100">
             </div>
-            <div class="item">
-                <img src="{{ asset('storage/img/team/team-img-2.png') }}" alt="Screenshots image" class="img-fluid h-100">
-            </div>
-            <div class="item">
-                <img src="{{ asset('storage/img/team/team-img-3.png') }}" alt="Screenshots image" class="img-fluid h-100">
-            </div>
-            <div class="item">
-                <img src="{{ asset('storage/img/team/team-img-4.png') }}" alt="Screenshots image" class="img-fluid h-100">
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -68,30 +61,13 @@
             </div>
         </div>
         <div class="gallery-carousel owl-carousel owl-theme mb-20">
-            <div class="item">
-                <img src="{{ asset('storage/img/kunjungan/junjungan-1.jpg') }}" alt="Screenshots image" class="img-fluid h-100">
+            @foreach ($recentGalleries as $gallery)
+            <div class="item d-flex justify-content-center">
+                <a href="{{ $gallery->photo }}" data-lightbox="galeri" data-title="{{ $gallery->description }}">
+                    <img src="{{ $gallery->photo }}" alt="Gallery" class="img-fluid h-[200px]">
+                </a>
             </div>
-            <div class="item">
-                <img src="{{ asset('storage/img/kunjungan/junjungan-2.jpg') }}" alt="Screenshots image" class="img-fluid h-100">
-            </div>
-            <div class="item">
-                <img src="{{ asset('storage/img/kunjungan/junjungan-3.jpg') }}" alt="Screenshots image" class="img-fluid h-100">
-            </div>
-            <div class="item">
-                <img src="{{ asset('storage/img/kunjungan/junjungan-4.jpg') }}" alt="Screenshots image" class="img-fluid h-100">
-            </div>
-            <div class="item">
-                <img src="{{ asset('storage/img/kunjungan/junjungan-5.jpg') }}" alt="Screenshots image" class="img-fluid h-100">
-            </div>
-            <div class="item">
-                <img src="{{ asset('storage/img/kunjungan/junjungan-7.png') }}" alt="Screenshots image" class="img-fluid h-100">
-            </div>
-            <div class="item">
-                <img src="{{ asset('storage/img/kunjungan/junjungan-8.png') }}" alt="Screenshots image" class="img-fluid h-100">
-            </div>
-            <div class="item">
-                <img src="{{ asset('storage/img/kunjungan/junjungan-9.png') }}" alt="Screenshots image" class="img-fluid h-100">
-            </div>
+            @endforeach
         </div>
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
@@ -116,90 +92,36 @@
             </div>
         </div>
         <div class="row justify-content-center mb-20">
+            @foreach ($recentBlogs as $blog)
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="blog-item">
                     <div class="img">
-                        <a href="blog-single.html">
-                            <img src="{{ asset('storage/img/blog/blog-img-4.jpg') }}" alt="Blog image" class="img-fluid" />
+                        <a href="{{ route('blog.show', $blog->slug) }}">
+                            <img src="{{ $blog->thumbnail }}" alt="Blog image" class="img-fluid" />
                         </a>
                     </div>
                     <div class="body">
                         <div class="meta">
                             <a href="#">
                                 <i class="far fa-calendar-alt"></i>
-                                <span>11 April</span>
+                                <span>{{ $blog->created_at->translatedFormat('d F Y') }}</span>
                             </a>
                             <a href="#">
                                 <i class="far fa-user"></i>
-                                <span>By Admin</span>
+                                <span>{{ $blog->username }}</span>
                             </a>
                         </div>
                         <h2>
-                            <a href="#">I forgot my password, how to renew?</a>
+                            <a href="{{ route('blog.show', $blog->slug) }}">{{ $blog->title }}</a>
                         </h2>
                         <p>
-                            It is a long established fact that a reader will be distracted by..
+                            {!! $blog->short_content !!}
                         </p>
-                        <a href="blog-single.html" title="Read More" class="blog-button">Read More <i class="fa fa-arrow-right"></i></a>
+                        <a href="{{ route('blog.show', $blog->slug) }}" title="Read More" class="blog-button">Lanjut baca <i class="fa fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="blog-item">
-                    <div class="img">
-                        <a href="blog-single.html">
-                            <img src="{{ asset('storage/img/blog/blog-img-4.jpg') }}" alt="Blog image" class="img-fluid" />
-                        </a>
-                    </div>
-                    <div class="body">
-                        <div class="meta">
-                            <a href="#">
-                                <i class="far fa-calendar-alt"></i>
-                                <span>11 April</span>
-                            </a>
-                            <a href="#">
-                                <i class="far fa-user"></i>
-                                <span>By Admin</span>
-                            </a>
-                        </div>
-                        <h2>
-                            <a href="#">I forgot my password, how to renew?</a>
-                        </h2>
-                        <p>
-                            It is a long established fact that a reader will be distracted by..
-                        </p>
-                        <a href="blog-single.html" title="Read More" class="blog-button">Read More <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="blog-item">
-                    <div class="img">
-                        <a href="blog-single.html">
-                            <img src="{{ asset('storage/img/blog/blog-img-4.jpg') }}" alt="Blog image" class="img-fluid" />
-                        </a>
-                    </div>
-                    <div class="body">
-                        <div class="meta">
-                            <a href="#">
-                                <i class="far fa-calendar-alt"></i>
-                                <span>11 April</span>
-                            </a>
-                            <a href="#">
-                                <i class="far fa-user"></i>
-                                <span>By Admin</span>
-                            </a>
-                        </div>
-                        <h2>
-                            <a href="#">I forgot my password, how to renew?</a>
-                        </h2>
-                        <p>
-                            It is a long established fact that a reader will be distracted by..
-                        </p>
-                        <a href="blog-single.html" title="Read More" class="blog-button">Read More <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
@@ -224,25 +146,27 @@
             </div>
         </div>
         <div class="testimonials-carousel owl-carousel owl-theme mb-20">
+            @foreach ($reviews as $review)
             <div class="item">
                 <div class="testimonial-item">
                     <div class="body">
                         <h6>
-                            Marvin Pasaribu
+                            {{ $review->name }}
                         </h6>
                         <div class="rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star {{ $review->stars >= 1 ? 'text-warning' : 'text-secondary' }}"></i>
+                            <i class="fa fa-star {{ $review->stars >= 2 ? 'text-warning' : 'text-secondary' }}"></i>
+                            <i class="fa fa-star {{ $review->stars >= 3 ? 'text-warning' : 'text-secondary' }}"></i>
+                            <i class="fa fa-star {{ $review->stars >= 4 ? 'text-warning' : 'text-secondary' }}"></i>
+                            <i class="fa fa-star {{ $review->stars >= 5 ? 'text-warning' : 'text-secondary' }}"></i>
                         </div>
                         <p>
-                            Lokasi di mangkupalas, samarinda. Berada di pinggir sungai mahakam dengan view jembatan mahkota 2, sungai mahakam dan rumah2 dipinggir sungai. Cukup ramai didatangi orang2 pada pagi & sore hari untuk jalan2 dan berfoto dengan keluarga. Juga termasuk jalur track bersepeda keliling samarinda.
+                            {{ $review->review }}
                         </p>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
@@ -267,57 +191,23 @@
             </div>
         </div>
         <div class="row">
+            @foreach ($faqs as $faq)
             <div class="col-12 mb-4">
                 <div class="accordion-item">
-                    <div class="accordion-item-header" id="accordionHeadingOne">
-                        <a href="#" data-toggle="collapse" data-target="#accordionItemOne" aria-expanded="false" aria-controls="accordionItemOne">
+                    <div class="accordion-item-header" id="{{ 'accordionHeading'.$loop->index }}">
+                        <a href="#" data-toggle="collapse" data-target="#{{ 'accordionItemOne'.$loop->index }}" aria-expanded="false" aria-controls="{{ 'accordionItemOne'.$loop->index }}">
                             <i class="fas fa-question"></i>
-                            <span>Apa saja yang tersedia di kampung ketupat?</span>
+                            <span>{{ $faq->question }}</span>
                         </a>
                     </div>
-                    <div id="accordionItemOne" class="collapse" aria-labelledby="accordionHeadingOne">
+                    <div id="{{ 'accordionItemOne'.$loop->index }}" class="collapse" aria-labelledby="{{ 'accordionHeading'.$loop->index }}">
                         <div class="accordion-body">
-                            <p>
-                                Selain ciri khas ketupatnya, terdapat spot yang bagus untuk berfoto dan beberapa makanan tradisional yang tersedia, juga ada acara yang diadakan guna meramaikan kampung ketupat, bahkan di hari minggu terdapat hiburan musik dan permainan tradisional.
-                            </p>
+                            <p>{{ $faq->answer }}</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 mb-4">
-                <div class="accordion-item">
-                    <div class="accordion-item-header" id="accordionHeaderTwo">
-                        <a href="#" data-toggle="collapse" data-target="#accordionItemTwo" aria-expanded="false" aria-controls="accordionItemTwo">
-                            <i class="fas fa-question"></i>
-                            <span>Bagaimana sejarah kampung ketupat?</span>
-                        </a>
-                    </div>
-                    <div id="accordionItemTwo" class="collapse" aria-labelledby="accordionHeaderTwo">
-                        <div class="accordion-body">
-                            <p>
-                                Dinamai kampung ketupat karena keunikan masyarakatnya yang mempunyai kebiasaan membuat ketupat.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="accordion-item">
-                    <div class="accordion-item-header" id="accordionHeaderThree">
-                        <a href="#" data-toggle="collapse" data-target="#accordionItemThree" aria-expanded="false" aria-controls="accordionItemThree">
-                            <i class="fas fa-question"></i>
-                            <span>Apakah pihak luar bisa bekerjasama untuk membuat suatu acara atau lainnya?</span>
-                        </a>
-                    </div>
-                    <div id="accordionItemThree" class="collapse" aria-labelledby="accordionHeaderThree">
-                        <div class="accordion-body">
-                            <p>
-                                Sudah banyak pihak-pihak yang bekerjasama dengan kampung ketupat, seperti ada yang ingin membuat acara dan juga banyak mahasiswa-mahasiswa yang melakukan kegiatan KKN, PKM, dan pengabdian masyarakat yang membuat fasilitas di kampung ketupat menjadi lebih bervariasi.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

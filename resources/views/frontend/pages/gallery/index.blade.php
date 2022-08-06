@@ -28,8 +28,16 @@
 
 <section class="section" id="gallerySection">
 	<div class="container">
-		<div class="row">
-			<div class="col-12"></div>
+		<div class="row justify-content-center">
+			@foreach ($galleries->chunk(3) as $chunk)
+			<div class="col-12 col-md-4 col-lg-3 col-xl-4">
+				@foreach ($chunk as $gallery)
+				<a href="{{ $gallery->photo }}" data-title="{{ $gallery->description }}" data-lightbox="galeri" data-alt="Galeri">
+					<img src="{{ $gallery->photo }}" class="w-full mb-3">
+				</a>
+				@endforeach
+			</div>
+			@endforeach
 		</div>
 	</div>
 </section>

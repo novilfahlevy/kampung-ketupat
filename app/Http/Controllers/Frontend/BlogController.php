@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -12,9 +13,17 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('frontend.pages.blog.index');
+        $blogs = Blog::query();
+
+        if ($request->query->has('keyword')) {
+            $blogs->keyword($request->query->get('keyword'));
+        }
+
+        $blogs = $blogs->paginate(9);
+
+        return view('frontend.pages.blog.index', compact('blogs'));
     }
 
     /**
@@ -44,9 +53,10 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        return view('frontend.pages.blog.show');
+        $blog = Blog::whereSlug($slug)->public()->firstOrFail();
+        return view('frontend.pages.blog.show', compact('blog'));
     }
 
     /**

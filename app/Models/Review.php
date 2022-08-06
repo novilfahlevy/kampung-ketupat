@@ -27,4 +27,9 @@ class Review extends Model
             ->orWhere('email', 'LIKE', '%'.$keyword.'%')
             ->orWhere('review', 'LIKE', '%'.$keyword.'%');
     }
+
+    public function scopePublic($query)
+    {
+        return $query->where('is_public', true);
+    }
 }
