@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\CollaborationController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\ReviewController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\VisitorController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -38,6 +39,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('/kerjasama', CollaborationController::class);
     Route::resource('/galeri', BackendGalleryController::class);
     Route::resource('/blog', BackendBlogController::class);
+    Route::resource('/pengaturan', SettingController::class);
     Route::get('/aktifitas', ActionController::class)->name('aktifitas');
 });
 

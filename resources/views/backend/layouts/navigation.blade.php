@@ -30,6 +30,9 @@
                     <x-nav-link :href="route('admin.faq.index')" :active="request()->routeIs('admin.faq.index')">
                         {{ __('FAQ') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.pengaturan.index')" :active="request()->routeIs('admin.pengaturan.index')">
+                        {{ __('Pengaturan') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('admin.pengguna.index')" :active="request()->routeIs('admin.pengguna.index')">
                         {{ __('Pengguna') }}
                     </x-nav-link>
