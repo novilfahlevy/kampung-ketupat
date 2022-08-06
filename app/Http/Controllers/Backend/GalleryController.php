@@ -54,10 +54,15 @@ class GalleryController extends Controller
     {
         DB::beginTransaction();
         try {
-            foreach ($request->photos_base64 as $photo) {
+            foreach ($request->photos_base64 as $photoBase64) {
                 $gallery = new Gallery();
                 $gallery->description = $request->description;
-                $filename = $this->saveFile($photo);
+                
+                $filename = $this->saveAndModify($photoBase64, function($image) use ($gallery) {
+                    $gallery->photo_width = $image->width();
+                    $gallery->photo_height = $image->height();
+                });
+
                 if ($filename) {
                     $gallery->photo_url = $filename;
                     $gallery->save();
@@ -116,8 +121,12 @@ class GalleryController extends Controller
             $gallery = Gallery::find($id);
             $gallery->description = $request->description;
     
-            if ($request->photo_base64) {
-                $filename = $this->saveFile($request->photo_base64);
+            $photoBase64 = $request->photo_base64;
+            if ($photoBase64) {
+                $filename = $this->saveAndModify($photoBase64, function($image) use ($gallery) {
+                    $gallery->photo_width = $image->width();
+                    $gallery->photo_height = $image->height();
+                });
                 if ($filename) {
                     $gallery->photo_url = $filename;
                 }

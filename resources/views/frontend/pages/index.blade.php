@@ -34,7 +34,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="section-heading">
-                    <h2>Kerjasama</h2>
+                    <h2>Kerja Sama</h2>
                     <h4>Pihak yang pernah bekerja sama dan mengadakan kegiatan di Kampung Ketupat</h4>
                 </div>
             </div>
@@ -67,10 +67,12 @@
         @if (!$recentGalleries->isEmpty())
         <div class="gallery-carousel owl-carousel owl-theme mb-20">
             @foreach ($recentGalleries as $gallery)
-            <div class="item d-flex justify-content-center">
-                <a href="{{ $gallery->photo }}" data-lightbox="galeri" data-title="{{ $gallery->description }}">
-                    <img src="{{ $gallery->photo }}" alt="Gallery" class="img-fluid h-[200px]">
-                </a>
+            <div class="item">
+                <div class="card card-body shadow">
+                    <a href="{{ $gallery->photo }}" class="d-flex justify-content-center" data-lightbox="galeri" data-title="{{ $gallery->description }}">
+                        <img src="{{ $gallery->photo }}" alt="Gallery" class="img-fluid h-[200px]">
+                    </a>
+                </div>
             </div>
             @endforeach
         </div>
@@ -87,7 +89,7 @@
 <!--// Galeri Section End //-->
 
 <!--// Blogs Section Start //-->
-<section class="section bg-light-grey" id="blog">
+<section class="section" id="blog">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
@@ -195,7 +197,7 @@
 
 <!--// FAQ Section Start //-->
 @if (!$faqs->isEmpty())
-<section class="section bg-light-grey" id="faq-area">
+<section class="section" id="faq-area">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">

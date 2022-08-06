@@ -27,7 +27,7 @@
                           <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#lokasi') : '#lokasi' }}">Lokasi</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#kerjasama') : '#kerjasama' }}">Kerjasama</a>
+                          <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#kerjasama') : '#kerjasama' }}">Kerja Sama</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#galeri') : '#galeri' }}">Galeri</a>

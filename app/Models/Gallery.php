@@ -5,12 +5,13 @@ namespace App\Models;
 use App\Traits\Upload;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Gallery extends Model
 {
     use HasFactory, Upload;
 
-    protected $fillable = ['photo_url', 'description'];
+    protected $fillable = ['photo_url', 'photo_width', 'photo_height', 'description'];
 
     protected static function boot()
     {
@@ -37,5 +38,12 @@ class Gallery extends Model
     public function scopeRecent($query, $limit = 6)
     {
         return $query->orderByDesc('created_at')->take($limit);
+    }
+
+    public function scopeLandscape($query)
+    {
+        return $query
+            ->where('photo_height', '<=', DB::raw('photo_width'))
+            ->orderByRaw('photo_height <= photo_width');
     }
 }
