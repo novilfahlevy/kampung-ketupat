@@ -10,8 +10,8 @@
     <div class="py-12">
         <x-card>
           <div class="relative mb-5">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
                             <th scope="col" class="py-3 px-6">
                                 No
@@ -26,7 +26,7 @@
                     </thead>
                     <tbody>
                         @foreach ($visitors as $visitor)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <tr class="bg-white border-b">
                             <td class="py-4 px-6">
                                 {{ (($visitors->perPage() * $visitors->currentPage()) - $visitors->perPage()) + ($loop->index + 1) }}
                             </td>
