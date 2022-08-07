@@ -31,7 +31,7 @@
 						@enderror
 					</div>
 					<div>
-						<label for="description">Deskripsi</label>
+						<label for="description">Deskripsi (opsional)</label>
 						<x-textarea class="block mt-1 w-full" name="description" id="description">{{ old('description', $gallery->description) }}</x-textarea>
 						@error('description')
 						<p class="text-red-800">{{ $message }}</p>

@@ -53,7 +53,7 @@ class Blog extends Model
 
     public function getUsernameAttribute()
     {
-        return $this->user ? $this->user->name : 'User';
+        return $this->user ? $this->user->name : config('app.name');
     }
     
     public function getShortContentAttribute()

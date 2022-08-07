@@ -9,7 +9,10 @@
     <meta name="description" content="Kampung Ketupat kampung penuh warna">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="_token" content="{{ csrf_token() }}">
+
     <title>Kampung Ketupat | Kampung Penuh Warna</title>
+
+    <x-favicon />
 
     <!--// Boostrap v4 //-->
     <link rel="stylesheet" href="{{ asset('storage/vendor/css/bootstrap.min.css') }}">
