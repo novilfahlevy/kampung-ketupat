@@ -44,6 +44,6 @@ class Gallery extends Model
     {
         return $query
             ->where('photo_height', '<=', DB::raw('photo_width'))
-            ->orderByRaw('photo_height <= photo_width');
+            ->orderByRaw('IF(photo_height <= photo_width, 0, 1)');
     }
 }
