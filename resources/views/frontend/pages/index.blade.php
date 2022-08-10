@@ -68,11 +68,9 @@
         <div class="gallery-carousel owl-carousel owl-theme mb-20">
             @foreach ($recentGalleries as $gallery)
             <div class="item">
-                <div class="card card-body shadow">
-                    <a href="{{ $gallery->photo }}" class="d-flex justify-content-center" data-lightbox="galeri" data-title="{{ $gallery->description }}">
-                        <img src="{{ $gallery->photo }}" alt="Gallery" class="img-fluid h-[200px]">
-                    </a>
-                </div>
+                <a href="{{ $gallery->photo }}" class="d-flex justify-content-center" data-lightbox="galeri" data-title="{{ $gallery->description }}">
+                    <img src="{{ $gallery->photo }}" alt="Gallery" class="img-fluid h-[200px] shadow-sm rounded-sm">
+                </a>
             </div>
             @endforeach
         </div>
