@@ -21,7 +21,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            Slug
+                            {{ $blog->title }}
                         </li>
                     </ul>
                 </div>

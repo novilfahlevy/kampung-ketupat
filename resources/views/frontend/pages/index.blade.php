@@ -120,13 +120,13 @@
                                 <span>{{ $blog->username }}</span>
                             </a>
                         </div>
-                        <h2>
+                        <h2 class="mb-0">
                             <a href="{{ route('blog.show', $blog->slug) }}">{{ $blog->title }}</a>
                         </h2>
                         {{-- <p>
                             {!! $blog->short_content !!}
                         </p> --}}
-                        <a href="{{ route('blog.show', $blog->slug) }}" title="Read More" class="blog-button">Baca <i class="fa fa-arrow-right"></i></a>
+                        {{-- <a href="{{ route('blog.show', $blog->slug) }}" title="Read More" class="blog-button">Baca <i class="fa fa-arrow-right"></i></a> --}}
                     </div>
                 </div>
             </div>
@@ -213,8 +213,10 @@
                 <div class="accordion-item">
                     <div class="accordion-item-header" id="{{ 'accordionHeading'.$loop->index }}">
                         <a href="#" data-toggle="collapse" data-target="#{{ 'accordionItemOne'.$loop->index }}" aria-expanded="false" aria-controls="{{ 'accordionItemOne'.$loop->index }}">
-                            <i class="fas fa-question"></i>
-                            <span>{{ $faq->question }}</span>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-question"></i>
+                                <span class="text-center text-md-left">{{ $faq->question }}</span>
+                            </div>
                         </a>
                     </div>
                     <div id="{{ 'accordionItemOne'.$loop->index }}" class="collapse" aria-labelledby="{{ 'accordionHeading'.$loop->index }}">

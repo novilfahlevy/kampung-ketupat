@@ -61,13 +61,13 @@
                                 <span>{{ $blog->username }}</span>
                             </a>
                         </div>
-                        <h2>
+                        <h2 class="mb-0">
                             <a href="{{ route('blog.show', $blog->slug) }}">{{ $blog->title }}</a>
                         </h2>
                         {{-- <p>
                             {!! $blog->short_content !!}
                         </p> --}}
-                        <a href="{{ route('blog.show', $blog->slug) }}" title="Read More" class="blog-button">Baca <i class="fa fa-arrow-right"></i></a>
+                        {{-- <a href="{{ route('blog.show', $blog->slug) }}" title="Read More" class="blog-button">Baca <i class="fa fa-arrow-right"></i></a> --}}
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                 <p class="text-center">Belum ada blog</p>
             </div>
             @endforelse
-			<div class="col-12">
+			<div class="col-12 d-flex justify-content-center">
 				{{ $blogs->links('frontend.pagination') }}
 			</div>
         </div>
