@@ -26,8 +26,8 @@ class StoreBlogRequest extends FormRequest
         return [
             'title' => 'required',
             'content' => 'required',
-            'thumbnail_base64' => 'required|base64file|base64mimes:jpg,jpeg,png|base64max:200000',
-            'photos_base64.*' => 'required|base64file|base64mimes:jpg,jpeg,png|base64max:200000',
+            'thumbnail_base64' => 'required|base64file|base64mimes:jpg,jpeg,png|base64max:250000',
+            'photos_base64.*' => 'required|base64file|base64mimes:jpg,jpeg,png|base64max:250000',
         ];
     }
 
@@ -38,9 +38,9 @@ class StoreBlogRequest extends FormRequest
             'content.required' => 'Mohon masukkan konten blog',
             'thumbnail_base64.required' => 'Mohon masukkan foto sampul blog',
             'thumbnail_base64.base64mimes' => 'Foto sampul harus memiliki format jpg, jpeg, atau png',
-            'thumbnail_base64.base64max' => 'Foto sampul harus memiliki ukuran tidak lebih dari 2MB',
+            'thumbnail_base64.base64max' => 'Foto sampul harus memiliki ukuran tidak lebih dari 2.5MB',
             'photos_base64.*.base64mimes' => 'Foto harus memiliki format jpg, jpeg, atau png',
-            'photos_base64.*.base64max' => 'Foto harus memiliki ukuran tidak lebih dari 2MB',
+            'photos_base64.*.base64max' => 'Foto harus memiliki ukuran tidak lebih dari 2.5MB',
         ];
     }
 }

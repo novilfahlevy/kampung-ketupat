@@ -26,7 +26,7 @@ class StoreSettingRequest extends FormRequest
         $rules = [];
 
         if (!$this->isEmptyString('header_background_base64')) {
-            $rules['header_background_base64'] = 'base64file|base64mimes:jpg,jpeg,png|base64max:200000';
+            $rules['header_background_base64'] = 'base64file|base64mimes:jpg,jpeg,png|base64max:250000';
         }
         
         return $rules;
@@ -36,7 +36,7 @@ class StoreSettingRequest extends FormRequest
     {
         return [
             'header_background_base64.base64mimes' => 'Foto sampul harus memiliki format jpg, jpeg, atau png',
-            'header_background_base64.base64max' => 'Foto sampul harus memiliki ukuran tidak lebih dari 2MB',
+            'header_background_base64.base64max' => 'Foto sampul harus memiliki ukuran tidak lebih dari 2.5MB',
         ];
     }
 }

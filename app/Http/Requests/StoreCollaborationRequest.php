@@ -25,7 +25,7 @@ class StoreCollaborationRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'logo_base64' => 'required|base64file|base64mimes:jpg,jpeg,png|base64max:200000'
+            'logo_base64' => 'required|base64file|base64mimes:jpg,jpeg,png|base64max:250000'
         ];
     }
 
@@ -35,7 +35,7 @@ class StoreCollaborationRequest extends FormRequest
             'name.required' => 'Mohon masukkan nama pihak',
             'logo_base64.required' => 'Mohon masukkan logo pihak',
             'logo_base64.base64mimes' => 'Logo harus memiliki format jpg, jpeg, atau png',
-            'logo_base64.base64max' => 'Logo harus memiliki ukuran tidak lebih dari 2MB',
+            'logo_base64.base64max' => 'Logo harus memiliki ukuran tidak lebih dari 2.5MB',
         ];
     }
 }
