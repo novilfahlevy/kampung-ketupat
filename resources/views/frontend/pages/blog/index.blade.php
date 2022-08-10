@@ -64,11 +64,10 @@
                         <h2>
                             <a href="{{ route('blog.show', $blog->slug) }}">{{ $blog->title }}</a>
                         </h2>
-                        <p>
+                        {{-- <p>
                             {!! $blog->short_content !!}
-                        </p>
-                        <a href="{{ route('blog.show', $blog->slug) }}" title="Read More" class="blog-button">Lanjut
-                            baca <i class="fa fa-arrow-right"></i></a>
+                        </p> --}}
+                        <a href="{{ route('blog.show', $blog->slug) }}" title="Read More" class="blog-button">Baca <i class="fa fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
