@@ -31,12 +31,20 @@
               </a>
               @endisset
             </div>
-            <!-- Histats.com  START (html only)-->
-            <a href="/" alt="page hit counter" target="_blank" >
-              <embed src="//s10.histats.com/437.swf"  flashvars="jver=1&acsid=4687670&domi=4"  quality="high"  width="112" height="75" name="437.swf"  align="middle" type="application/x-shockwave-flash" pluginspage="//www.macromedia.com/go/getflashplayer" wmode="transparent" />
-            </a>
-            <img  src="//sstatic1.histats.com/0.gif?4687670&101" alt="" border="0">
-            <!-- Histats.com  END  -->
+            <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
+            <!-- Histats.com  START  (aync)-->
+            <script type="text/javascript">var _Hasync= _Hasync|| [];
+              _Hasync.push(['Histats.start', '1,4687670,4,437,112,75,00011111']);
+              _Hasync.push(['Histats.fasi', '1']);
+              _Hasync.push(['Histats.track_hits', '']);
+              _Hasync.push(['Histats.framed_page', '']);
+              (function() {
+              var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+              hs.src = ('//s10.histats.com/js15_as.js');
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+              })();</script>
+              <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4687670&101" alt="" border="0"></a></noscript>
+              <!-- Histats.com  END  -->
           </div>
         </div>
         <div class="col-md-6 col-lg-4 footer-widget-resp">
