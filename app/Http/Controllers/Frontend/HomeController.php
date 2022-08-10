@@ -25,7 +25,7 @@ class HomeController extends Controller
         Visitor::create(['ip' => request()->ip()]);
 
         $collaborations = Collaboration::all();
-        $recentGalleries = Gallery::recent()->get();
+        $recentGalleries = Gallery::recent()->landscape()->get();
         $recentBlogs = Blog::public()->recent()->get();
         $reviews = Review::public()->get();
         $faqs = Faq::all();

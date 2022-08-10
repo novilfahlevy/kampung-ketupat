@@ -42,8 +42,6 @@ class Gallery extends Model
 
     public function scopeLandscape($query)
     {
-        return $query
-            ->where('photo_height', '<=', DB::raw('photo_width'))
-            ->orderByRaw('IF(photo_height <= photo_width, 0, 1)');
+        return $query->orderByRaw('IF(photo_height <= photo_width, 0, 1)');
     }
 }
