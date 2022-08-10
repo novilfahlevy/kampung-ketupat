@@ -49,6 +49,14 @@
                     <p>{{ $setting['phone'] }}</p>
                   </div>
                 </li>
+                <li>
+                  <!-- Histats.com  START (html only)-->
+                  <a href="/" alt="page hit counter" target="_blank" >
+                    <embed src="//s10.histats.com/437.swf"  flashvars="jver=1&acsid=4687670&domi=4"  quality="high"  width="112" height="75" name="437.swf"  align="middle" type="application/x-shockwave-flash" pluginspage="//www.macromedia.com/go/getflashplayer" wmode="transparent" />
+                  </a>
+                  <img  src="//sstatic1.histats.com/0.gif?4687670&101" alt="" border="0">
+                  <!-- Histats.com  END  -->
+                </li>
               </ul>
             </div>
           </div>
