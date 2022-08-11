@@ -241,7 +241,7 @@ function HovyLeeCarousel(){
         slideTransition: 'linear',
         loop: true,
         center: true,
-        margin: 0,
+        margin: 50,
         nav: false,
         dots: false,
         autoWidth: true,
