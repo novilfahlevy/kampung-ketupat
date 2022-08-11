@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\NewestFirstScope;
 use App\Traits\Upload;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,6 +17,7 @@ class Gallery extends Model
     protected static function boot()
     {
         parent::boot();
+        static::addGlobalScope(new NewestFirstScope);
         static::deleted(function(self $gallery) {
             $gallery->deleteFile($gallery->photo_url);
         });
@@ -37,7 +39,7 @@ class Gallery extends Model
 
     public function scopeRecent($query, $limit = 6)
     {
-        return $query->orderByDesc('created_at')->take($limit);
+        return $query->take($limit);
     }
 
     public function scopeLandscape($query)

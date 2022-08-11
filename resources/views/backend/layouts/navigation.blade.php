@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('admin.kerjasama.index')" :active="request()->routeIs('admin.kerjasama.index')">
-                        {{ __('Kerja Sama') }}
+                        {{ __('Dukungan') }}
                     </x-nav-link>
                     <x-nav-link :href="route('admin.galeri.index')" :active="request()->routeIs('admin.galeri.index')">
                         {{ __('Galeri') }}

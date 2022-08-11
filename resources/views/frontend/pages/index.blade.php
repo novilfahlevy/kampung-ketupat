@@ -28,19 +28,18 @@
 </section>
 {{-- Location Section End --}}
 
-<!--// Kerjasama Section Start //-->
-<section class="section bg-light-grey" id="kerjasama">
+<!--// Dukungan Section Start //-->
+<section class="section bg-light-grey" id="dukungan">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="section-heading">
-                    <h2>Kerja Sama</h2>
-                    <h4>Pihak yang pernah bekerja sama dan mengadakan kegiatan di Kampung Ketupat</h4>
+                    <h2>Didukung Oleh</h2>
                 </div>
             </div>
         </div>
         @if (!$collaborations->isEmpty())
-        <div class="kerjasama-carousel owl-carousel owl-theme mb-20">
+        <div class="dukungan-carousel owl-carousel owl-theme mb-20">
             @foreach ($collaborations as $collaboration)
             <div class="item">
                 <img src="{{ $collaboration->logo }}" alt="{{ $collaboration->name }}" class="img-fluid h-100">
@@ -52,7 +51,7 @@
         @endif
     </div>
 </section>
-<!--// Kerjasama Section End //-->
+<!--// Dukungan Section End //-->
 
 <!--// Galeri Section Start //-->
 <section class="section" id="galeri">

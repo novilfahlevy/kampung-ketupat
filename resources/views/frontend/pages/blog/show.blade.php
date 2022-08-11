@@ -1,36 +1,6 @@
 @extends('frontend.layouts.index')
 
 @section('content')
-<!--// Breadcrumb Section Start //-->
-<section class="breadcrumb-section section" data-bg-image-path="{{ asset('storage/img/bg/bg-grid.jpg') }}">
-    <div id="heroparticles"></div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="breadcrumb-inner">
-                    <h1>Kumpulan blog Kampung Ketupat</h1>
-                    <ul class="breadcrumb-links">
-                        <li>
-                            <a href="{{ url('/') }}">
-                                <i class="fas fa-home"></i>
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a href="{{ route('blog.index') }}">
-                                Blog
-                            </a>
-                        </li>
-                        <li class="active">
-                            {{ $blog->title }}
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--// Breadcrumb Section end //-->
-
 <!--// Blog Single Section Start //-->
 <section class="section padding-minus-10" id="blogSingleSection">
     <div class="container">

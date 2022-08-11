@@ -1,7 +1,7 @@
 <x-app-layout>
 <x-slot name="header">
 	<h2 class="font-semibold text-xl text-gray-800 leading-tight">
-		{{ __('Pihak Kerja Sama') }}
+		{{ __('Dukungan') }}
 	</h2>
 </x-slot>
 
@@ -31,7 +31,7 @@
 					@enderror
 				</div>
 			</div>
-			<x-button type="submit" color="green">Buat Pihak Kerja Sama</x-button>
+			<x-button type="submit" color="green">Buat Pihak Dukungan</x-button>
 		</form>
 	</x-card>
 </div>

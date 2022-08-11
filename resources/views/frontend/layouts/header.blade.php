@@ -1,5 +1,5 @@
 <!--// Header Start //-->
-<header class="header fixed-top p-3 p-lg-0" id="header">
+<header class="{{ 'header fixed-top p-3 p-lg-0' . (request()->routeIs('blog.show') ? ' always-shrink header-shrink' : '') }}" id="header">
   <div id="nav-menu-wrap">
       <div class="container">
           <nav class="navbar navbar-expand-lg p-0">
@@ -27,7 +27,7 @@
                           <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#lokasi') : '#lokasi' }}">Lokasi</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#kerjasama') : '#kerjasama' }}">Kerja Sama</a>
+                          <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#dukungan') : '#dukungan' }}">Dukungan</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link menu-link" href="{{ $isInsidePage ? url('/#galeri') : '#galeri' }}">Galeri</a>

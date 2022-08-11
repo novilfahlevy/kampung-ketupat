@@ -81,12 +81,12 @@ function HovyLeeHeader() {
         if( scrollTop > 85 ) {
             logoTransparent.hide();
             logoNormal.show();
-            header.addClass( 'header-shrink' );
+            !header.hasClass('always-shrink') && header.addClass( 'header-shrink' );
             scrollTopBtn.addClass( 'active' );
         }else {
             logoTransparent.show();
             logoNormal.hide();
-            header.removeClass( 'header-shrink' );
+            !header.hasClass('always-shrink') && header.removeClass( 'header-shrink' );
             scrollTopBtn.removeClass( 'active' );
         }
     });
@@ -95,12 +95,12 @@ function HovyLeeHeader() {
     if( scrollTop > 85 ) {
         logoTransparent.hide();
         logoNormal.show();
-        header.addClass( 'header-shrink' );
+        !header.hasClass('always-shrink') && header.addClass( 'header-shrink' );
         scrollTopBtn.addClass( 'active' );
     }else {
         logoTransparent.show();
         logoNormal.hide();
-        header.removeClass( 'header-shrink' );
+        !header.hasClass('always-shrink') && header.removeClass( 'header-shrink' );
         scrollTopBtn.removeClass( 'active' );
     }
 
@@ -211,10 +211,10 @@ function HovyLeeCarousel(){
     // Variables
     let $testimonialsCarousel    = $( '.testimonials-carousel');
     let $galleryCarousel         = $( '.gallery-carousel');
-    let $kerjasamaCarousel       = $( '.kerjasama-carousel');
+    let $supportCarousel        = $( '.dukungan-carousel');
 
     const carouselConfig = {
-        margin:30,
+        margin: 0,
         dots:true,
         nav:false,
         responsive:{
@@ -233,7 +233,7 @@ function HovyLeeCarousel(){
         },
     }
 
-    $kerjasamaCarousel.owlCarousel({
+    $supportCarousel.owlCarousel({
         ...carouselConfig,
         autoplay: true,
         autoplaySpeed: 2000,
@@ -241,12 +241,18 @@ function HovyLeeCarousel(){
         slideTransition: 'linear',
         loop: true,
         center: true,
+        margin: 0,
+        nav: false,
+        dots: false,
+        autoWidth: true,
     });
 
     $galleryCarousel.owlCarousel({
         ...carouselConfig,
         loop: true,
         center: true,
+        autoWidth: true,
+        margin: 10,
     });
     
     $testimonialsCarousel.owlCarousel({

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Pihak Kerja Sama') }}
+            {{ __('Dukungan') }}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
             <div class="grid grid-cols-1 md:grid-cols-[40%,1fr] lg:grid-cols-[30%,1fr] gap-3 mb-5 md:mb-0">
                 <div>
                     <x-button-link href="{{ route('admin.kerjasama.create') }}" icon="fas fa-plus" class="mb-5">
-                        Tambah Pihak Kerja Sama
+                        Tambah Pihak Pendukung
                     </x-button-link>
                 </div>
                 <div>

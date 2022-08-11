@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\NewestFirstScope;
 use App\Traits\Upload;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,7 @@ class Blog extends Model
     protected static function boot()
     {
         parent::boot();
+        static::addGlobalScope(new NewestFirstScope);
         static::deleted(function(self $blog) {
             $blog->deleteFile($blog->big_thumbnail_url);
             $blog->deleteFile($blog->medium_thumbnail_url);
@@ -71,7 +73,7 @@ class Blog extends Model
     public function scopeRecent($query, $limit = 3, $slug = null)
     {
         if ($slug) $query->where('slug', '!=', $slug);
-        return $query->orderByDesc('created_at')->take($limit);
+        return $query->take($limit);
     }
 
     public function scopePublic($query)
