@@ -16,6 +16,8 @@
  * 06.Background Image
  * 07.Magnific Popup
  * 08.Contact Form
+ * 09.Review Form
+ * 10.Remove Histats Unused Images
 ------------------------------------------------------------------- */
 
 $( document ).ready( function() {
@@ -491,3 +493,28 @@ $('form#sendReviewForm').submit(function(event) {
         }
     });
 });
+
+/* -------------------------------------------------------------------
+ * 10.Remove Histats Unused Images
+------------------------------------------------------------------- */
+if ('MutationObserver' in window) {
+    const observer = new MutationObserver(() => {
+        let iframe = document.querySelector('iframe[title=sovrn-sync-beacon-portal]');
+        if (iframe) {
+            let image = iframe.previousSibling;
+            if (image) {
+                while (image.tagName == 'IMG') {
+                    if (image) {
+                        image.style.display = 'none';
+                        image = image.previousSibling;
+                    }
+                }
+            }
+        }
+    });
+    observer.observe(document.body, {
+        attributes:    true,
+        childList:     true,
+        characterData: true
+    });
+}
