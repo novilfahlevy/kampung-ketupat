@@ -43,8 +43,8 @@
 				</div>
 			</div>
             @forelse ($blogs as $blog)
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="blog-item">
+            <div class="col-12 col-md-6 col-lg-4 d-flex flex-column">
+                <div class="blog-item flex-1">
                     <div class="img">
                         <a href="{{ route('blog.show', $blog->slug) }}">
                             <img src="{{ $blog->medium_thumbnail }}" alt="Blog image" class="img-fluid" />
@@ -61,7 +61,7 @@
                                 <span>{{ $blog->username }}</span>
                             </a>
                         </div>
-                        <h2 class="mb-0">
+                        <h2 class="mb-0" style="text-overflow: ellipsis; overflow: hidden;">
                             <a href="{{ route('blog.show', $blog->slug) }}">{{ $blog->title }}</a>
                         </h2>
                         {{-- <p>

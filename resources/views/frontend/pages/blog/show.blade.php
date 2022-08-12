@@ -51,7 +51,7 @@
                             </div>
                             <div class="recent-post-body">
                                 <a href="{{ route('blog.show', $recent->slug) }}">
-                                    <h6 class="recent-post-title">{{ $recent->title }}</h6>
+                                    <h6 class="recent-post-title" style="text-overflow: ellipsis; overflow: hidden;">{{ $recent->title }}</h6>
                                 </a>
                                 <p class="recent-post-date"><i class="far fa-calendar-alt"></i>{{ $recent->created_at->translatedFormat('d F Y') }}</p>
                             </div>
