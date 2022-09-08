@@ -9,21 +9,11 @@
   
   <div class="py-12">
     <x-card>
-      <form x-data="setting()" action="{{ route('admin.pengaturan.store') }}" method="POST">
+      <form x-data="setting()" action="{{ route('admin.pengaturan.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div>
-					<label class="block mb-1" for="header_background">Foto Sampul Halaman Utama</label>
-					<input
-						type="file"
-						class="filepond"
-						name="header_background"
-						id="header_background"
-						accept="image/png, image/jpeg"
-					/>
-					@error('header_background_base64')
-					<p class="text-red-800">{{ $message }}</p>
-					@enderror
-				</div>
+        <div class="mb-5">
+          <x-image-upload label="Foto halaman utama" name="header_background" imageUrl="{{ asset('storage/uploads/'.$setting['header_background_url']) }}" />
+        </div>
         <div class="mb-5">
           <label for="location">Lokasi</label>
           <x-textarea class="block my-1 w-full" name="location" id="location" required>
@@ -102,16 +92,4 @@
       </form>
     </x-card>
   </div>
-
-  <x-slot name="script">
-    <script>
-      function setting() {
-        return {
-          init() {
-            initFilepond(document.getElementById('header_background'));
-          },
-        };
-      }
-    </script>
-  </x-slot>
 </x-app-layout>

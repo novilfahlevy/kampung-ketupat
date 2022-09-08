@@ -13,39 +13,10 @@
 			Kembali
 		</x-button-link>
 
-		<form x-data="createBlog()" action="{{ route('admin.blog.store') }}" method="POST">
+		<form x-data="createBlog()" action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data">
 			@csrf
 			<div class="grid grid-cols-1 gap-5 mb-5">
-				<div>
-					<label class="block mb-1" for="thumbnail">Foto sampul</label>
-					<input
-						type="file"
-						class="filepond"
-						name="thumbnail"
-						id="thumbnail"
-						accept="image/png, image/jpeg"
-					/>
-					@error('thumbnail_base64')
-					<p class="text-red-800">{{ $message }}</p>
-					@enderror
-				</div>
-				{{-- <div>
-					<label class="block mb-1" for="photos">Foto</label>
-					<input
-						type="file"
-						class="filepond"
-						name="photos"
-						id="photos"
-						accept="image/png, image/jpeg"
-						multiple
-					/>
-					@error('photos_base64')
-					<p class="text-red-800">{{ $message }}</p>
-					@enderror
-					@error('photos_base64.*')
-					<p class="text-red-800">{{ $message }}</p>
-					@enderror
-				</div> --}}
+				<x-image-upload label="Foto sampul" name="thumbnail" />
 				<div class="grid grid-cols-2 gap-5">
 					<div>
 						<label for="title">Judul</label>
@@ -82,7 +53,7 @@
 		function createBlog() {
 			return {
 				init() {
-					initFilepond(document.getElementById('thumbnail'));
+					// initFilepond(document.getElementById('thumbnail'));
 					// initFilepond(document.getElementById('photos'));
 
 					initEditor('contentEditor')

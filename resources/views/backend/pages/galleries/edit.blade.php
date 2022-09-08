@@ -13,23 +13,16 @@
 				Kembali
 			</x-button-link>
 	
-			<form x-data="updateCollaboration()" action="{{ route('admin.galeri.update', $gallery->id) }}" method="POST">
+			<form 
+				x-data="updateCollaboration()"
+				action="{{ route('admin.galeri.update', $gallery->id) }}"
+				method="POST"
+				enctype="multipart/form-data"
+			>
 				@csrf
 				@method('PUT')
-				<div class="grid grid-cols-2 gap-5 mb-5">
-					<div>
-						<label class="block mb-1" for="photo">Foto</label>
-						<input
-							type="file"
-							class="filepond"
-							name="photo"
-							id="photo"
-							accept="image/png, image/jpeg"
-						/>
-						@error('photo_base64')
-						<p class="text-red-800">{{ $message }}</p>
-						@enderror
-					</div>
+				<div class="grid grid-cols-1 gap-5 mb-5">
+					<x-image-upload label="Foto" name="photo" width="200px" height="200px" imageUrl="{{ asset('storage/uploads/'.$gallery->photo_url) }}" />
 					<div>
 						<label for="description">Deskripsi (opsional)</label>
 						<x-textarea class="block mt-1 w-full" name="description" id="description">{{ old('description', $gallery->description) }}</x-textarea>
@@ -48,7 +41,7 @@
 			function updateCollaboration() {
 				return {
 					init() {
-						initFilepond(document.getElementById('photo'));
+						// initFilepond(document.getElementById('photo'));
 					},
 				};
 			}

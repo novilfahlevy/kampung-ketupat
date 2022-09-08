@@ -24,15 +24,15 @@ class UpdateGalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo_base64' => 'base64file|base64mimes:jpg,jpeg,png|base64max:250000'
+            'photo' => 'file|mimes:jpg,jpeg,png|max:500000'
         ];
     }
 
     public function messages()
     {
         return [
-            'photo_base64.base64mimes' => 'Logo harus memiliki format jpg, jpeg, atau png',
-            'photo_base64.base64max' => 'Logo harus memiliki ukuran tidak lebih dari 2.5MB',
+            'photo.mimes' => 'Logo harus memiliki format jpg, jpeg, atau png',
+            'photo.max' => 'Logo harus memiliki ukuran tidak lebih dari 5MB',
         ];
     }
 }

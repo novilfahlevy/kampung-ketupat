@@ -25,7 +25,7 @@ class UpdateCollaborationRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'logo_base64' => 'base64file|base64mimes:jpg,jpeg,png|base64max:250000'
+            'logo' => 'file|mimes:jpg,jpeg,png|max:500000'
         ];
     }
 
@@ -33,8 +33,8 @@ class UpdateCollaborationRequest extends FormRequest
     {
         return [
             'name.required' => 'Mohon masukkan nama pihak',
-            'logo_base64.base64mimes' => 'Logo harus memiliki format jpg, jpeg, atau png',
-            'logo_base64.base64max' => 'Logo harus memiliki ukuran tidak lebih dari 2.5MB',
+            'logo.mimes' => 'Logo harus memiliki format jpg, jpeg, atau png',
+            'logo.max' => 'Logo harus memiliki ukuran tidak lebih dari 5MB',
         ];
     }
 }

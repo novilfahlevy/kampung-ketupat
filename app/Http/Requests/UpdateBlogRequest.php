@@ -26,11 +26,11 @@ class UpdateBlogRequest extends FormRequest
         $rules = [
             'title' => 'required',
             'content' => 'required',
-            'photos_base64.*' => 'required|base64file|base64mimes:jpg,jpeg,png|base64max:250000',
+            // 'photos.*' => 'required|file|mimes:jpg,jpeg,png|max:500000',
         ];
 
-        if (!$this->isEmptyString('thumbnail_base64')) {
-            $rules['thumbnail_base64'] = 'base64file|base64mimes:jpg,jpeg,png|base64max:250000';
+        if ($this->exists('thumbnail') && !$this->isEmptyString('thumbnail')) {
+            $rules['thumbnail'] = 'file|mimes:jpg,jpeg,png|max:500000';
         }
 
         return $rules;
@@ -41,10 +41,10 @@ class UpdateBlogRequest extends FormRequest
         return [
             'title.required' => 'Mohon masukkan judul blog',
             'content.required' => 'Mohon masukkan konten blog',
-            'thumbnail_base64.base64mimes' => 'Foto sampul harus memiliki format jpg, jpeg, atau png',
-            'thumbnail_base64.base64max' => 'Foto sampul harus memiliki ukuran tidak lebih dari 2.5MB',
-            'photos_base64.*.base64mimes' => 'Foto harus memiliki format jpg, jpeg, atau png',
-            'photos_base64.*.base64max' => 'Foto harus memiliki ukuran tidak lebih dari 2.5MB',
+            'thumbnail.mimes' => 'Foto sampul harus memiliki format jpg, jpeg, atau png',
+            'thumbnail.max' => 'Foto sampul harus memiliki ukuran tidak lebih dari 5MB',
+            // 'photos.*.mimes' => 'Foto harus memiliki format jpg, jpeg, atau png',
+            // 'photos.*.max' => 'Foto harus memiliki ukuran tidak lebih dari 5MB',
         ];
     }
 }

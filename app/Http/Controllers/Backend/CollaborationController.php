@@ -63,7 +63,7 @@ class CollaborationController extends Controller
             $collaboration = new Collaboration();
             $collaboration->name = $request->name;
     
-            $filename = $this->saveAndModify($request->logo_base64, fn($image) => $this->resizeLogo($image));
+            $filename = $this->saveAndModify($request->logo, fn($image) => $this->resizeLogo($image));
             if ($filename) {
                 $collaboration->logo_url = $filename;
                 $collaboration->save();
@@ -73,12 +73,12 @@ class CollaborationController extends Controller
 
             return redirect()
                 ->route('admin.kerjasama.index')
-                ->with('response', ['status' => 200, 'message' => 'Berhasil menambah pihak kerjasama']);
+                ->with('response', ['status' => 200, 'message' => 'Berhasil menambah pihak kerja sama']);
         } catch (Exception $error) {
             app('sentry')->captureException($error);
             return redirect()
                 ->back()
-                ->with('response', ['status' => $error->getCode(), 'message' => 'Gagal menambah pihak kerjasama, silakan coba lagi']);
+                ->with('response', ['status' => $error->getCode(), 'message' => 'Gagal menambah pihak kerja sama, silakan coba lagi']);
         }
     }
 
@@ -118,8 +118,8 @@ class CollaborationController extends Controller
             $collaboration = Collaboration::find($id);
             $collaboration->name = $request->name;
     
-            if ($request->logo_base64) {
-                $filename = $this->saveAndModify($request->logo_base64, fn($image) => $this->resizeLogo($image), $collaboration->logo_url);
+            if ($request->logo) {
+                $filename = $this->saveAndModify($request->logo, fn($image) => $this->resizeLogo($image), $collaboration->logo_url);
                 if ($filename) {
                     $collaboration->logo_url = $filename;
                 }
@@ -131,12 +131,12 @@ class CollaborationController extends Controller
 
             return redirect()
                 ->back()
-                ->with('response', ['status' => 200, 'message' => 'Berhasil mengedit pihak kerjasama']);
+                ->with('response', ['status' => 200, 'message' => 'Berhasil mengedit pihak kerja sama']);
         } catch (Exception $error) {
             app('sentry')->captureException($error);
             return redirect()
                 ->back()
-                ->with('response', ['status' => $error->getCode(), 'message' => 'Gagal mengedit pihak kerjasama, silakan coba lagi']);
+                ->with('response', ['status' => $error->getCode(), 'message' => 'Gagal mengedit pihak kerja sama, silakan coba lagi']);
         }
     }
 

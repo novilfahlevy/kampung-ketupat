@@ -13,40 +13,11 @@
 				Kembali
 			</x-button-link>
 	
-			<form x-data="createBlog()" action="{{ route('admin.blog.update', $blog->id) }}" method="POST">
+			<form x-data="editBlog()" action="{{ route('admin.blog.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
 				@csrf
 				@method('PUT')
 				<div class="grid grid-cols-1 gap-5 mb-5">
-					<div>
-						<label class="block mb-1" for="thumbnail">Foto sampul</label>
-						<input
-							type="file"
-							class="filepond"
-							name="thumbnail"
-							id="thumbnail"
-							accept="image/png, image/jpeg"
-						/>
-						@error('thumbnail_base64')
-						<p class="text-red-800">{{ $message }}</p>
-						@enderror
-					</div>
-					{{-- <div>
-						<label class="block mb-1" for="photos">Foto</label>
-						<input
-							type="file"
-							class="filepond"
-							name="photos"
-							id="photos"
-							accept="image/png, image/jpeg"
-							multiple
-						/>
-						@error('photos_base64')
-						<p class="text-red-800">{{ $message }}</p>
-						@enderror
-						@error('photos_base64.*')
-						<p class="text-red-800">{{ $message }}</p>
-						@enderror
-					</div> --}}
+					<x-image-upload label="Foto sampul" name="thumbnail" imageUrl="{{ asset('storage/uploads/'.$blog->big_thumbnail_url) }}" />
 					<div class="grid grid-cols-2 gap-5">
 						<div>
 							<label for="title">Judul</label>
@@ -80,10 +51,10 @@
 	<x-slot name="script">
 		@include('components.editor')
 		<script>
-			function createBlog() {
+			function editBlog() {
 				return {
 					init() {
-						initFilepond(document.getElementById('thumbnail'));
+						// initFilepond(document.getElementById('thumbnail'));
 						// initFilepond(document.getElementById('photos'));
 	
 						initEditor('contentEditor')

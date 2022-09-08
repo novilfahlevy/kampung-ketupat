@@ -62,7 +62,7 @@ class BlogController extends Controller
             $blog->content = $request->content;
             $blog->is_public = !!$request->is_public;
     
-            $thumbnail = $request->thumbnail_base64;
+            $thumbnail = $request->thumbnail;
             if ($thumbnail) {
                 $bigThumbnailFilename = $this->resizeAndSave($thumbnail, 800, 600);
                 if ($bigThumbnailFilename) {
@@ -83,7 +83,7 @@ class BlogController extends Controller
             }
 
 
-            $photos = $request->photos_base64;
+            $photos = $request->photos;
             if ($photos) {
                 foreach ($photos as $photo) {
                     $photoName = $this->saveFile($photo);
@@ -149,7 +149,7 @@ class BlogController extends Controller
             $blog->content = $request->content;
             $blog->is_public = !!$request->is_public;
 
-            $thumbnail = $request->thumbnail_base64;
+            $thumbnail = $request->thumbnail;
             if ($thumbnail) {
                 $bigThumbnailFilename = $this->resizeAndSave($thumbnail, 800, 600, $blog->big_thumbnail_url);
                 if ($bigThumbnailFilename) {
@@ -169,7 +169,7 @@ class BlogController extends Controller
 
             $blog->save();
 
-            $photos = $request->photos_base64;
+            $photos = $request->photos;
             if ($photos) {
                 $blog->photos()->delete();
                 foreach ($photos as $photo) {

@@ -13,9 +13,9 @@
 			Kembali
 		</x-button-link>
 
-		<form x-data="createCollaboration()" action="{{ route('admin.kerjasama.store') }}" method="POST">
+		<form x-data="createCollaboration()" action="{{ route('admin.kerjasama.store') }}" method="POST" enctype="multipart/form-data">
 			@csrf
-			<div class="grid grid-cols-2 gap-5 mb-5">
+			<div class="grid grid-cols-1 gap-5 mb-5">
 				<div>
 					<label for="name">Nama</label>
 					<x-input type="text" class="block mt-1 w-full" name="name" id="name" value="{{ old('name') }}" required autofocus />
@@ -23,13 +23,7 @@
 					<p class="text-red-800">{{ $message }}</p>
 					@enderror
 				</div>
-				<div>
-					<label class="block mb-1" for="logo">Logo</label>
-					<input type="file" class="filepond" name="logo" id="logo" accept="image/png, image/jpeg" />
-					@error('logo_base64')
-					<p class="text-red-800">{{ $message }}</p>
-					@enderror
-				</div>
+				<x-image-upload label="Logo" name="logo" width="200px" height="200px" />
 			</div>
 			<x-button type="submit" color="green">Buat Pihak Dukungan</x-button>
 		</form>
@@ -41,7 +35,7 @@
 		function createCollaboration() {
 			return {
 				init() {
-					initFilepond(document.getElementById('logo'));
+					// initFilepond(document.getElementById('logo'));
 				},
 			};
 		}

@@ -56,7 +56,7 @@ class SettingController extends Controller
             Setting::where('key', 'twitter')->update(['value' => $request->twitter]);
             Setting::where('key', 'youtube')->update(['value' => $request->youtube]);
 
-            $headerBackground = $request->header_background_base64;
+            $headerBackground = $request->header_background;
             $oldHeaderBackground = Setting::where('key', 'header_background_url')->first();
             if ($headerBackground && $oldHeaderBackground) {
                 $filename = $this->resizeAndSave($headerBackground, 1920, 1080, $oldHeaderBackground->header_background_url);

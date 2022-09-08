@@ -24,18 +24,18 @@ class StoreGalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            'photos_base64' => 'required|array|min:1',
-            'photos_base64.*' => 'required|base64file|base64mimes:jpg,jpeg,png|base64max:250000',
+            'photos' => 'required|array|min:1',
+            'photos.*' => 'required|file|mimes:jpg,jpeg,png|max:500000',
         ];
     }
 
     public function messages()
     {
         return [
-            'photos_base64.required' => 'Mohon masukkan paling tidak satu foto',
-            'photos_base64.min' => 'Mohon masukkan paling tidak satu foto',
-            'photos_base64.*.base64mimes' => 'Foto harus memiliki format jpg, jpeg, atau png',
-            'photos_base64.*.base64max' => 'Foto harus memiliki ukuran tidak lebih dari 2.5MB',
+            'photos.required' => 'Mohon masukkan paling tidak satu foto',
+            'photos.min' => 'Mohon masukkan paling tidak satu foto',
+            'photos.*.mimes' => 'Foto harus memiliki format jpg, jpeg, atau png',
+            'photos.*.max' => 'Foto harus memiliki ukuran tidak lebih dari 5MB',
         ];
     }
 }
