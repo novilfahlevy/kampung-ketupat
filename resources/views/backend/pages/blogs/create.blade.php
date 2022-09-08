@@ -47,22 +47,24 @@
 	</x-card>
 </div>
 
-<x-slot name="script">
-	@include('components.editor')
+<x-slot name="beforeScript">
+	<script src="{{ asset('storage/vendor/js/ckeditor.js') }}"></script>
+</x-slot>
+
+<x-slot name="afterScript">
 	<script>
 		function createBlog() {
 			return {
 				init() {
-					// initFilepond(document.getElementById('thumbnail'));
-					// initFilepond(document.getElementById('photos'));
-
-					initEditor('contentEditor')
-						.then(editor => {
-							editor.editing.view.document.on('change', (evt, data) => {
-								document.getElementById('content').value = editor.getData();
-							});
-						})
-						.catch(error => console.log(error));
+					setTimeout(() => {
+						initEditor('contentEditor')
+							.then(editor => {
+								editor.editing.view.document.on('change', (evt, data) => {
+									document.getElementById('content').value = editor.getData();
+								});
+							})
+							.catch(error => console.log(error));
+					}, 0);
 				},
 			};
 		}

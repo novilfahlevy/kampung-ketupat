@@ -13,7 +13,7 @@
 			Kembali
 		</x-button-link>
 
-		<form x-data="createCollaboration()" action="{{ route('admin.kerjasama.store') }}" method="POST" enctype="multipart/form-data">
+		<form x-init action="{{ route('admin.kerjasama.store') }}" method="POST" enctype="multipart/form-data">
 			@csrf
 			<div class="grid grid-cols-1 gap-5 mb-5">
 				<div>
@@ -29,16 +29,4 @@
 		</form>
 	</x-card>
 </div>
-
-<x-slot name="script">
-	<script>
-		function createCollaboration() {
-			return {
-				init() {
-					// initFilepond(document.getElementById('logo'));
-				},
-			};
-		}
-	</script>
-</x-slot>
 </x-app-layout>

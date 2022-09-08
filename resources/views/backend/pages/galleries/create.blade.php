@@ -12,7 +12,7 @@
 		</x-button-link>
 
 		<form
-			x-data="createCollaboration()"
+			x-init
 			action="{{ route('admin.galeri.store') }}"
 			method="POST"
 			enctype="multipart/form-data"
@@ -32,16 +32,4 @@
 		</form>
 	</x-card>
 </div>
-
-<x-slot name="script">
-	<script>
-		function createCollaboration() {
-			return {
-				init() {
-					// initFilepond(document.getElementById('photos'));
-				},
-			};
-		}
-	</script>
-</x-slot>
 </x-app-layout>

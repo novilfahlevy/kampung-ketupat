@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\ImageUploadController;
 use App\Http\Controllers\Frontend\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/ulasan', ReviewController::class)->name('send-review');
+Route::post('/image-upload', ImageUploadController::class)->name('image-upload');
