@@ -23,15 +23,22 @@ class StoreGalleryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'photos' => 'required|array|min:1',
-            'photos.*' => 'required|file|mimes:jpg,jpeg,png|max:500000',
-        ];
+        if ($this->has('photos')) {
+            return [
+                'photos' => 'required|array|min:1',
+                'photos.*' => 'required|file|mimes:jpg,jpeg,png|max:500000',
+            ];
+        } else if ($this->has('youtube_url')) {
+            return [
+                'youtube_url' => 'required'
+            ];
+        }
     }
 
     public function messages()
     {
         return [
+            'youtube_url.required' => 'Mohon masukkan link youtube yang ingin diunggah',
             'photos.required' => 'Mohon masukkan paling tidak satu foto',
             'photos.min' => 'Mohon masukkan paling tidak satu foto',
             'photos.*.mimes' => 'Foto harus memiliki format jpg, jpeg, atau png',

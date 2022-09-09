@@ -37,6 +37,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::resource('/faq', FaqController::class);
     Route::resource('/ulasan', ReviewController::class);
     Route::resource('/kerjasama', CollaborationController::class);
+    Route::group(['as' => 'galeri.'], function() {
+        Route::get('/galeri/create-video', 'App\Http\Controllers\Backend\GalleryController@createVideo')->name('create-video');
+        Route::get('/galeri/edit-video/{id}', 'App\Http\Controllers\Backend\GalleryController@editVideo')->name('edit-video');
+    });
     Route::resource('/galeri', BackendGalleryController::class);
     Route::resource('/blog', BackendBlogController::class);
     Route::resource('/pengaturan', SettingController::class);

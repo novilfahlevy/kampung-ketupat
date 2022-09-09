@@ -23,14 +23,21 @@ class UpdateGalleryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'photo' => 'file|mimes:jpg,jpeg,png|max:500000'
-        ];
+        if ($this->has('photo')) {
+            return [
+                'photo' => 'file|mimes:jpg,jpeg,png|max:500000',
+            ];
+        } else if ($this->has('youtube_url')) {
+            return [
+                'youtube_url' => 'required'
+            ];
+        }
     }
 
     public function messages()
     {
         return [
+            'youtube_url.required' => 'Mohon masukkan link youtube yang ingin diunggah',
             'photo.mimes' => 'Logo harus memiliki format jpg, jpeg, atau png',
             'photo.max' => 'Logo harus memiliki ukuran tidak lebih dari 5MB',
         ];

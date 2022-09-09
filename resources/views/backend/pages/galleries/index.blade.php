@@ -14,6 +14,9 @@
                     <x-button-link href="{{ route('admin.galeri.create') }}" icon="fas fa-plus" class="mb-5">
                         Tambah Foto
                     </x-button-link>
+                    <x-button-link href="{{ route('admin.galeri.create-video') }}" icon="fas fa-plus" class="mb-5">
+                        Tambah Video
+                    </x-button-link>
                 </div>
                 <div>
                     <form method="GET" action="{{ route('admin.galeri.index') }}">
@@ -50,7 +53,11 @@
                                 {{ (($galleries->perPage() * $galleries->currentPage()) - $galleries->perPage()) + ($loop->index + 1) }}
                             </td>
                             <td class="py-4 px-6">
+                                @if ($gallery->type == 'photo')
                                 <img src="{{ $gallery->photo }}" class="w-[100px] h-[100px]" alt="Photo">
+                                @else
+                                <p>Video youtube</p>
+                                @endif
                             </td>
                             <td class="py-4 px-6">
                                 {{ $gallery->description }}
@@ -69,7 +76,7 @@
                                     </x-slot>
                 
                                     <x-slot name="content">
-                                        <x-dropdown-link :href="route('admin.galeri.edit', $gallery->id)">
+                                        <x-dropdown-link href="{{ $gallery->type == 'photo' ? route('admin.galeri.edit', $gallery->id) : route('admin.galeri.edit-video', $gallery->id) }}">
                                             {{ __('Edit') }}
                                         </x-dropdown-link>
 

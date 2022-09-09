@@ -43,6 +43,43 @@ class GalleryController extends Controller
     {
         return view('backend.pages.galleries.create');
     }
+    
+    public function createVideo()
+    {
+        return view('backend.pages.galleries.create-video');
+    }
+
+    private function storePhotos(StoreGalleryRequest $request)
+    {
+        foreach ($request->photos as $photo) {
+            $gallery = new Gallery();
+            $gallery->description = $request->description;
+            $gallery->type = 'photo';
+            
+            $filename = $this->saveAndModify($photo, function($image) use ($gallery) {
+                $gallery->photo_width = $image->width();
+                $gallery->photo_height = $image->height();
+            });
+
+            if ($filename) {
+                $gallery->photo_url = $filename;
+                $gallery->save();
+            }
+        }
+
+        $this->logAction('Mengunggah foto ke galeri');
+    }
+
+    private function storeVideo(StoreGalleryRequest $request)
+    {
+        $gallery = new Gallery();
+        $gallery->photo_url = $request->youtube_url;
+        $gallery->description = $request->description;
+        $gallery->type = 'video';
+        $gallery->save();
+
+        $this->logAction('Mengunggah video ke galeri');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -54,22 +91,11 @@ class GalleryController extends Controller
     {
         DB::beginTransaction();
         try {
-            foreach ($request->photos as $photo) {
-                $gallery = new Gallery();
-                $gallery->description = $request->description;
-                
-                $filename = $this->saveAndModify($photo, function($image) use ($gallery) {
-                    $gallery->photo_width = $image->width();
-                    $gallery->photo_height = $image->height();
-                });
-
-                if ($filename) {
-                    $gallery->photo_url = $filename;
-                    $gallery->save();
-                }
+            if ($request->youtube_url) {
+                $this->storeVideo($request);
+            } else {
+                $this->storePhotos($request);
             }
-
-            $this->logAction('Mengunggah foto ke galeri');
             
             DB::commit();
 
@@ -108,6 +134,43 @@ class GalleryController extends Controller
         return view('backend.pages.galleries.edit', compact('gallery'));
     }
 
+    public function editVideo($id)
+    {
+        $gallery = Gallery::find($id);
+        return view('backend.pages.galleries.edit-video', compact('gallery'));
+    }
+
+    private function updatePhoto(UpdateGalleryRequest $request, $id)
+    {
+        $gallery = Gallery::find($id);
+        $gallery->description = $request->description;
+
+        $photo = $request->photo;
+        if ($photo) {
+            $filename = $this->saveAndModify($photo, function($image) use ($gallery) {
+                $gallery->photo_width = $image->width();
+                $gallery->photo_height = $image->height();
+            });
+            if ($filename) {
+                $gallery->photo_url = $filename;
+            }
+        }
+
+        $gallery->save();
+
+        $this->logAction('Mengedit foto di galeri');
+    }
+
+    private function updateVideo(UpdateGalleryRequest $request, $id)
+    {
+        $gallery = Gallery::find($id);
+        $gallery->photo_url = $request->youtube_url;
+        $gallery->description = $request->description;
+        $gallery->save();
+
+        $this->logAction('Mengedit video di galeri');
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -117,27 +180,19 @@ class GalleryController extends Controller
      */
     public function update(UpdateGalleryRequest $request, $id)
     {
+        DB::beginTransaction();
         try {
-            $gallery = Gallery::find($id);
-            $gallery->description = $request->description;
-    
-            $photo = $request->photo;
-            if ($photo) {
-                $filename = $this->saveAndModify($photo, function($image) use ($gallery) {
-                    $gallery->photo_width = $image->width();
-                    $gallery->photo_height = $image->height();
-                });
-                if ($filename) {
-                    $gallery->photo_url = $filename;
-                }
+            if ($request->youtube_url) {
+                $this->updateVideo($request, $id);
+            } else {
+                $this->updatePhoto($request, $id);
             }
 
-            $gallery->save();
-
-            $this->logAction('Mengedit foto di galeri');
+            DB::commit();
 
             return redirect()->back()->with('response', ['status' => 200, 'message' => 'Berhasil mengedit foto di galeri']);
         } catch (Exception $error) {
+            DB::rollBack();
             app('sentry')->captureException($error);
             return redirect()->back()->with('response', ['status' => $error->getCode(), 'message' => 'Gagal mengedit foto di galeri, silakan coba lagi']);
         }

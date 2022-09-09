@@ -33,9 +33,13 @@
 			<div class="col-12 col-md-4 col-lg-3 col-xl-4">
 				@foreach ($chunk as $gallery)
 				<div class="card card-body shadow mb-3">
+					@if ($gallery->type == 'photo')
 					<a href="{{ $gallery->photo }}" data-title="{{ $gallery->description }}" data-lightbox="galeri" data-alt="Galeri">
 						<img src="{{ $gallery->photo }}" class="w-full">
 					</a>
+					@else
+					{!! $gallery->photo_url !!}
+					@endif
 				</div>
 				@endforeach
 			</div>

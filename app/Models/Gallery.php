@@ -12,7 +12,7 @@ class Gallery extends Model
 {
     use HasFactory, Upload;
 
-    protected $fillable = ['photo_url', 'photo_width', 'photo_height', 'description'];
+    protected $fillable = ['photo_url', 'type', 'photo_width', 'photo_height', 'description'];
 
     protected static function boot()
     {
@@ -40,6 +40,11 @@ class Gallery extends Model
     public function scopeRecent($query, $limit = 6)
     {
         return $query->take($limit);
+    }
+
+    public function scopePhoto($query)
+    {
+        return $query->whereType('photo');
     }
 
     public function scopeLandscape($query)
