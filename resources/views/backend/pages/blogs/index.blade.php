@@ -22,8 +22,8 @@
                 </div>
             </div>
             
-            <div class="relative mb-5">
-                <table class="w-full text-sm text-left text-gray-500">
+            <div class="relative overflow-x-scroll mb-5">
+                <table class="min-w-max text-sm text-left text-gray-500">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
                             <th scope="col" class="py-3 px-6">
@@ -32,10 +32,10 @@
                             <th scope="col" class="py-3 px-6">
                                 Foto Sampul
                             </th>
-                            <th scope="col" class="py-3 px-6">
+                            <th scope="col" class="py-3 px-6 w-[300px] lg:w-[400px]">
                                 Judul
                             </th>
-                            <th scope="col" class="py-3 px-6">
+                            <th scope="col" class="py-3 px-6 w-[200px] lg:w-[400px]">
                                 Tanggal Dibuat
                             </th>
                             <th scope="col" class="py-3 px-6">

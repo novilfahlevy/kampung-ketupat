@@ -13,7 +13,7 @@
 
 		<form action="{{ route('admin.pengguna.store') }}" method="POST">
 			@csrf
-			<div class="grid grid-cols-2 gap-5 mb-5">
+			<div class="grid lg:grid-cols-2 gap-5 mb-5">
 				<div>
 					<label for="email">Email</label>
 					<x-input type="email" class="block mt-1 w-full" name="email" id="email" :value="old('email')" required autofocus />

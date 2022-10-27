@@ -9,7 +9,7 @@
   
   <div class="py-12">
     <x-card>
-      <form x-data="setting()" action="{{ route('admin.pengaturan.store') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('admin.pengaturan.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-5">
           <x-image-upload label="Foto halaman utama" name="header_background" imageUrl="{{ asset('storage/uploads/'.$setting['header_background_url']) }}" />

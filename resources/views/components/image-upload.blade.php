@@ -10,7 +10,7 @@
     <p class="mb-2">{{ $label }}</p>
     <label
       class="border rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 cursor-pointer flex items-center justify-center"
-      style="{{ 'width:'.$width.';height:'.$height.';' }}"
+      id="imageContainer"
     >
       <input type="file" name="{{ $name }}" class="hidden" @change="generateImageBase64">
       <img x-show="isThereAnImage()" :src="isThereAnImage()" class="w-full h-full !rounded-sm p-1" alt="{{ $name }}">
@@ -21,6 +21,19 @@
     <p class="text-red-800 mt-2">{{ $message }}</p>
     @enderror
 </div>
+
+<style>
+    @media (max-width: 576px) {
+        #imageContainer {
+            width: 100% !important;
+        }
+    }
+
+    #imageContainer {
+        width: {{ $width }};
+        height: {{ $height }};
+    }
+</style>
 
 <script>
     function uploadImage() {

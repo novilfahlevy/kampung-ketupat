@@ -93,6 +93,30 @@
             <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.kerjasama.index')" :active="request()->routeIs('admin.kerjasama.index')">
+                {{ __('Dukungan') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.galeri.index')" :active="request()->routeIs('admin.galeri.index')">
+                {{ __('Galeri') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.blog.index')" :active="request()->routeIs('admin.blog.index')">
+                {{ __('Blog') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.ulasan.index')" :active="request()->routeIs('admin.ulasan.index')">
+                {{ __('Ulasan') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.faq.index')" :active="request()->routeIs('admin.faq.index')">
+                {{ __('FAQ') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.pengaturan.index')" :active="request()->routeIs('admin.pengaturan.index')">
+                {{ __('Pengaturan') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.pengguna.index')" :active="request()->routeIs('admin.pengguna.index')">
+                {{ __('Pengguna') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.aktifitas')" :active="request()->routeIs('admin.aktifitas')">
+                {{ __('Aktifitas Pengguna') }}
+            </x-responsive-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -107,6 +131,9 @@
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
+                    <x-responsive-nav-link :href="route('admin.pengguna.edit', 'profil')">
+                        {{ __('Edit Profil') }}
+                    </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
