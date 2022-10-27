@@ -18,7 +18,7 @@
 			@method('PUT')
 			<div class="grid grid-cols-1 gap-5 mb-5">
 				<x-image-upload label="Foto sampul" name="thumbnail" imageUrl="{{ asset('storage/uploads/'.$blog->big_thumbnail_url) }}" />
-				<div class="grid grid-cols-2 gap-5">
+				<div class="grid lg:grid-cols-2 gap-5">
 					<div>
 						<label for="title">Judul</label>
 						<x-input type="text" class="block mt-1 w-full" name="title" id="title" value="{{ old('title', $blog->title) }}" />
