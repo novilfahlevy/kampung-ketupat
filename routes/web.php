@@ -6,14 +6,13 @@ use App\Http\Controllers\Backend\GalleryController as BackendGalleryController;
 use App\Http\Controllers\Backend\CollaborationController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\FaqController;
-use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\Backend\VisitorController;
+use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\GalleryController;
-
+use App\Http\Controllers\Frontend\ReviewController as FrontendReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class);
 Route::resource('blog', BlogController::class);
 Route::resource('galeri', GalleryController::class);
+Route::resource('ulasan', FrontendReviewController::class);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function() {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');

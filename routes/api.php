@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\ImageUploadController;
-use App\Http\Controllers\Frontend\ReviewController;
+use App\Http\Controllers\Frontend\Api\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

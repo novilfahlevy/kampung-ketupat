@@ -27,7 +27,7 @@ class HomeController extends Controller
         $collaborations = Collaboration::all();
         $recentGalleries = Gallery::recent()->photo()->landscape()->get();
         $recentBlogs = Blog::public()->recent()->get();
-        $reviews = Review::public()->get();
+        $reviews = Review::public()->fiveStars()->take(10)->get();
         $faqs = Faq::all();
 
         return view('frontend.pages.index', compact('collaborations', 'recentGalleries', 'recentBlogs', 'reviews', 'faqs'));

@@ -15,7 +15,8 @@
                   @php
                       $isInGalleryPage = request()->routeIs('galeri.index') || request()->routeIs('galeri.show');
                       $isInBlogPage = request()->routeIs('blog.index') || request()->routeIs('blog.show');
-                      $isInsidePage = $isInGalleryPage || $isInBlogPage;
+                      $isInReviewPage = request()->routeIs('ulasan.index') || request()->routeIs('ulasan.show');
+                      $isInsidePage = $isInGalleryPage || $isInBlogPage || $isInReviewPage;
                   @endphp
                   <ul class="navbar-nav">
                       <li class="nav-item">

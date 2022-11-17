@@ -3,38 +3,85 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreReviewRequest;
 use App\Models\Review;
-use Exception;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $reviews = Review::fromTop()->paginate(20);
+        return view('frontend.pages.review.index', compact('reviews'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(StoreReviewRequest $request)
+    public function store(Request $request)
     {
-        try {
-            $review = new Review();
-            $review->name = $request->name;
-            $review->email = $request->email;
-            $review->review = $request->review;
-            $review->stars = $request->stars;
+        //
+    }
 
-            $review->save();
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
 
-            return response()->json(['status' => 200, 'message' => 'Terimakasih sudah memberi ulasan untuk kampung ketupat, ulasan anda akan segera kami publikasikan.']);
-        } catch (Exception $error) {
-            app('sentry')->captureException($error);
-            return response()
-                ->json(
-                    ['status' => $error->getCode(), 'message' => 'Sepertinya terjadi kesalahan saat mengirim ulasan anda, silakan coba lagi.'],
-                    400
-                );
-        }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

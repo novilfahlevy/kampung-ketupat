@@ -32,4 +32,14 @@ class Review extends Model
     {
         return $query->where('is_public', true);
     }
+
+    public function scopeFiveStars($query)
+    {
+        return $query->where('stars', '>=', 5);
+    }
+
+    public function scopeFromTop($query)
+    {
+        return $query->orderByDesc('stars');
+    }
 }
